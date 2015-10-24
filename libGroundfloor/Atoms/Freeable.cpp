@@ -7,7 +7,7 @@ int Groundfloor::Freeable::DebugString(char *buffer, long bufferlen) {
 		return 128;
 	}
 	else if (bufferlen > 128) {
-		sprintf(buffer, "%s@%016x\0", this->classname(), reinterpret_cast<unsigned int>(this));
+		sprintf(buffer, "%s@%016x\0", this->classname(), reinterpret_cast<unsigned long>(this));
 	}
 	else {
 		return 0;

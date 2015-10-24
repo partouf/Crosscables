@@ -68,6 +68,6 @@ fi
 
 
 make -f $makefile clean
-env ARCHS="$ARCHS" \
-make -f $makefile
+exitcode=`env ARCHS="$ARCHS" make -f $makefile`
 sh devmake.sh
+exit $exitcode

@@ -29,7 +29,7 @@ Supported/tested platforms:
  * Linux [![Build Status](https://travis-ci.org/partouf/Crosscables.svg?branch=master)](https://travis-ci.org/partouf/Crosscables)
  
 Supported/tested, but Makefiles not yet fixed before uploading to GitHub:
- * MacOSX
+ * MacOSX (only libGroundfloor and libJumpropes will build)
  * FreeBSD
  * Solaris (no GUI)
 

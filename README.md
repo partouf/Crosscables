@@ -29,4 +29,5 @@ Supported/tested, but Makefiles not yet fixed before uploading to GitHub:
  * Linux
  * MacOSX
  * FreeBSD
+ * Solaris (no GUI)
 

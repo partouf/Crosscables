@@ -4,7 +4,7 @@
 
 //------------------------------------------------------------------------
 
-@interface CBCocoaWindow: NSWindow {
+@interface CBCocoaWindow: NSWindow <NSWindowDelegate> {
    unsigned long customid;
 }
    - (void)setCustomId:(unsigned long)iId;
@@ -258,7 +258,7 @@ void addToRadiogroup( id parent, id button ) {
       if ( menuclickeventfunction != 0 ) {
          menuclickeventfunction( (unsigned long)sender, 0 );
       } else {
-         NSLog( @"menuclick %d", (unsigned long)sender );
+         NSLog( @"menuclick %d", (int)sender );
       }
    }
    - (void) buttonClick:(id)sender {
@@ -266,7 +266,7 @@ void addToRadiogroup( id parent, id button ) {
          CBCocoaButton *button = (CBCocoaButton *)sender;
          clickeventfunction( (unsigned long)sender, [button getCustomId] );
       } else {
-         NSLog( @"buttonclick %d", (unsigned long)sender );
+         NSLog( @"buttonclick %d", (int)sender );
       }
    }
    - (void) comboClick:(id)sender {
@@ -274,7 +274,7 @@ void addToRadiogroup( id parent, id button ) {
          CBCocoaCombobox *combo = (CBCocoaCombobox *)sender;
          clickeventfunction( (unsigned long)sender, [combo getCustomId] );
       } else {
-         NSLog( @"comboclick %d", (unsigned long)sender );
+         NSLog( @"comboclick %d", (int)sender );
       }
    }
    - (void) radiobuttonClick:(id)sender {
@@ -295,7 +295,7 @@ void addToRadiogroup( id parent, id button ) {
 
          clickeventfunction( (unsigned long)sender, [button getCustomId] );
       } else {
-         NSLog( @"radiobuttonclick %d", (unsigned long)sender );
+         NSLog( @"radiobuttonclick %d", (int)sender );
       }
    }
    - (void) applicationWillFinishLaunching: (NSNotification *)notif {
@@ -311,7 +311,7 @@ void addToRadiogroup( id parent, id button ) {
          CBCocoaTabViewItem *tab = (CBCocoaTabViewItem *)tabViewItem;
          tabselecteventfunction( [view getCustomId], [tab getCustomId] );
       } else {
-         NSLog( @"tabselectevent %d", (unsigned long)tabView );
+         NSLog( @"tabselectevent %d", (int)tabView );
       }
    }
 @end

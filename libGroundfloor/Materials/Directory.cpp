@@ -135,11 +135,10 @@ bool Groundfloor::Directory::isDirectory() {
       #ifdef _DIRENT_HAVE_D_TYPE
          if ( anEntry->d_type == DT_UNKNOWN ) {
             // dt_unknown, op een andere manier bepalen dan maar...
-            Groundfloor::String *sTmp = new Groundfloor::String( sCurrentDir );
-            Groundfloor::AppendNativeSlash( sTmp );
-            sTmp->append_ansi( anEntry->d_name );
-            bool bIsDir = GFIsDirectory( sTmp );
-            delete sTmp;
+            Groundfloor::String sTmp( sCurrentDir );
+            Groundfloor::AppendNativeSlash( &sTmp );
+            sTmp.append_ansi( anEntry->d_name );
+            bool bIsDir = Groundfloor::IsDirectory( &sTmp );
 
             return bIsDir;
          } else {
@@ -147,11 +146,10 @@ bool Groundfloor::Directory::isDirectory() {
          }
       #else
          // d_type property is niet supported door de kernel, op een andere manier opvragen of het een directory is
-         Groundfloor::String *sTmp = new Groundfloor::String( sCurrentDir );
-         Groundfloor::AppendNativeSlash( sTmp );
-         sTmp->append_ansi( anEntry->d_name );
-         bool bIsDir = Groundfloor::IsDirectory( sTmp );
-         delete sTmp;
+         Groundfloor::String sTmp( sCurrentDir );
+         Groundfloor::AppendNativeSlash( &sTmp );
+         sTmp.append_ansi( anEntry->d_name );
+         bool bIsDir = Groundfloor::IsDirectory( &sTmp );
 
          return bIsDir;
       #endif

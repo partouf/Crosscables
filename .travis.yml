@@ -2,4 +2,4 @@ os:
   - linux
 language: cpp
 compiler: gcc
-script: cd libGroundfloor && sh build.sh && cd ../libJumpropes && sh build.sh && cd ../libJumpknots && sh build.sh && cd ../libMySQLBooks && sh build.sh
+script: cd libGroundfloor && sh build.sh && cd ../libChalkboard && sh build.sh && cd ../libJumpropes && sh build.sh && cd ../libJumpknots && sh build.sh && cd ../libMySQLBooks && sh build.sh

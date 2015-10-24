@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libMySQLBooks", "libMySQLBo
 		{F89D21F9-9D15-4590-AA71-F6D7C275C5E7} = {F89D21F9-9D15-4590-AA71-F6D7C275C5E7}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libChalkboard", "libChalkboard\libChalkboard.vcxproj", "{7A99161B-8A59-40F9-8E14-88B97D6023D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -53,6 +55,12 @@ Global
 		{E165B047-8B84-48C6-88B1-16E6CF91A9E8}.Release|x64.ActiveCfg = Release|Win32
 		{E165B047-8B84-48C6-88B1-16E6CF91A9E8}.Release|x86.ActiveCfg = Release|Win32
 		{E165B047-8B84-48C6-88B1-16E6CF91A9E8}.Release|x86.Build.0 = Release|Win32
+		{7A99161B-8A59-40F9-8E14-88B97D6023D8}.Debug|x64.ActiveCfg = Debug|Win32
+		{7A99161B-8A59-40F9-8E14-88B97D6023D8}.Debug|x86.ActiveCfg = Debug|Win32
+		{7A99161B-8A59-40F9-8E14-88B97D6023D8}.Debug|x86.Build.0 = Debug|Win32
+		{7A99161B-8A59-40F9-8E14-88B97D6023D8}.Release|x64.ActiveCfg = Release|Win32
+		{7A99161B-8A59-40F9-8E14-88B97D6023D8}.Release|x86.ActiveCfg = Release|Win32
+		{7A99161B-8A59-40F9-8E14-88B97D6023D8}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

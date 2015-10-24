@@ -55,6 +55,7 @@ fi
 
 
 make -f $makefile clean
+sh devmake.sh
 env ARCHS="$ARCHS" \
 make -f $makefile
-sh devmake.sh
+exit $?

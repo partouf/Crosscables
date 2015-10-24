@@ -2,10 +2,10 @@
 
 CPP  = g++
 CC   = gcc
-OBJ  = JKBaseSocket.o JKClientSocket.o JKInitialize.o $(RES)
-LINKOBJ  = JKBaseSocket.o JKClientSocket.o JKInitialize.o $(RES)
-LIBS =  -nostdlib
-CXXINCS =  -I"../../Groundfloor/trunk/include" -I"../../Jumpropes/trunk/include" 
+OBJ  = SSLBaseSocket.o SSLClientSocket.o SSLInitialize.o $(RES)
+LINKOBJ  = SSLBaseSocket.o SSLClientSocket.o SSLInitialize.o $(RES)
+LIBS = -nostdlib
+CXXINCS = -I"../include"
 BIN  = libJumpknots.a
 CXXFLAGS = $(CXXINCS)   -ansi -fexceptions -nostdlib
 RM = rm -f
@@ -27,11 +27,11 @@ $(BIN): $(LINKOBJ)
 	ar r $(BIN) $(LINKOBJ)
 	ranlib $(BIN)
 
-JKBaseSocket.o: JKBaseSocket.cpp
-	$(CPP) -c JKBaseSocket.cpp -o JKBaseSocket.o $(CXXFLAGS)
+SSLBaseSocket.o: SSLBaseSocket.cpp
+	$(CPP) -c SSLBaseSocket.cpp -o SSLBaseSocket.o $(CXXFLAGS)
 
-JKClientSocket.o: JKClientSocket.cpp
-	$(CPP) -c JKClientSocket.cpp -o JKClientSocket.o $(CXXFLAGS)
+SSLClientSocket.o: SSLClientSocket.cpp
+	$(CPP) -c SSLClientSocket.cpp -o SSLClientSocket.o $(CXXFLAGS)
 
-JKInitialize.o: JKInitialize.cpp
-	$(CPP) -c JKInitialize.cpp -o JKInitialize.o $(CXXFLAGS)
+SSLInitialize.o: SSLInitialize.cpp
+	$(CPP) -c SSLInitialize.cpp -o SSLInitialize.o $(CXXFLAGS)

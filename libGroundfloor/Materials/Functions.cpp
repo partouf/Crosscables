@@ -18,8 +18,8 @@
 
 
 // statische geindexeerde 'tabellen' voor vertalingsfuncties van en naar hex en base64
-char *sBase64Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-char *sHextable = "0123456789ABCDEF";
+const char *sBase64Table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const char *sHextable = "0123456789ABCDEF";
 
 
 int Groundfloor::strpos(const char *s, char c) {
@@ -228,10 +228,10 @@ void CharsToBase64(char sInput[], Groundfloor::String *sOutput) {
 
    d = (sInput[2] & 0x3F);
 
-   sOutput->append(static_cast<char *>(sBase64Table + a), 1);
-   sOutput->append(static_cast<char *>(sBase64Table + b), 1);
-   sOutput->append(static_cast<char *>(sBase64Table + c), 1);
-   sOutput->append(static_cast<char *>(sBase64Table + d), 1);
+   sOutput->append(static_cast<const char *>(sBase64Table + a), 1);
+   sOutput->append(static_cast<const char *>(sBase64Table + b), 1);
+   sOutput->append(static_cast<const char *>(sBase64Table + c), 1);
+   sOutput->append(static_cast<const char *>(sBase64Table + d), 1);
 }
 
 

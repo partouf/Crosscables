@@ -80,7 +80,7 @@
    - (void)setVisible:(bool)bVisible;
 @end
 
-@interface CBCocoaTree: NSOutlineView {
+@interface CBCocoaTree: NSOutlineView <NSOutlineViewDelegate> {
    bool visible;
    unsigned long customid;
    NSMenu *contextMenu;
@@ -116,7 +116,7 @@
 
 //------------------------------------------------------------------------
 
-@interface AppController : NSObject
+@interface AppController : NSObject <NSApplicationDelegate>
    - (void) buttonClick:(id)sender;
    - (void) radiobuttonClick:(id)sender;
    - (void) comboClick:(id)sender;
@@ -130,7 +130,7 @@ typedef struct __radiogroup {
    std::vector<id> buttons;
 } radiogroup;
 
-@interface GridDataSource: NSObject {
+@interface GridDataSource: NSObject <NSTableViewDelegate> {
    unsigned long thecustomid;
    CINTF_GRIDEDITABLEFUNC functionIsEditable;
    CINTF_GRIDNUMBEROFROWSFUNC functionNumberOfRows;

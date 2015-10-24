@@ -45,7 +45,7 @@ class TCBDriverCocoa: public TCBDriver
       unsigned long pDefaultFont;
       unsigned long pMonospaceFont;
 
-      void refreshItemsListbox( TCBListControl *aMagnet );
+      //void refreshItemsListbox( TCBListControl *aMagnet );
       void refreshItemsCombobox( TCBListControl *aMagnet );
 
       void addMenuItem( TCBMenu *aParentMenu, TCBMenu *aMenu );
@@ -70,6 +70,8 @@ class TCBDriverCocoa: public TCBDriver
       void getinfo_magnet( TCBMagnet *aMagnet, int iInfoType, BValue *aDestValue );
 
       long messagebox( TCBMagnet *aParent, String *sCaption, String *sText, long iType );
+
+      void preparefont(TCBFont *font);
 
       void setStartingWindow( TCBMagnet *aWindow );
       void mainloop_iteration();

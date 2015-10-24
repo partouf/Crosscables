@@ -391,6 +391,9 @@ void TCBDriverCocoa::finalize() {
 
 //-----------------------------------------------
 
+void TCBDriverCocoa::preparefont(TCBFont *font) {
+   // todo
+}
 
 void TCBDriverCocoa::refreshItemsCombobox( TCBListControl *aMagnet ) {
    if ( aMagnet->iRemoteId != NULL ) {

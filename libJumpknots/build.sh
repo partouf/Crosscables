@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# disable openssl on osx, need to fix build first
+if test $TRAVIS_OS_NAME = osx then
+   exit 0
+fi
+
 machine=`gcc -dumpmachine`
 set `echo $machine | tr '-' ' '`
 

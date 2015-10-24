@@ -4,8 +4,8 @@ CPP = g++
 BIN = libMySQLBooks.a
 OBJ = MySQLSquirrel.o MySquirrelUtils.o
 LINKOBJ = MySQLSquirrel.o MySquirrelUtils.o
-LIBS = -L"../../Groundfloor/trunk" -lGroundfloor
-CXXINCS = -I"../../Groundfloor/trunk/include"
+LIBS = 
+CXXINCS = -I"../include"
 CXXFLAGS = $(CXXINCS) -ansi -fexceptions
 RM = rm -f
 

@@ -5,7 +5,7 @@ BIN = libMySQLBooks.a
 OBJ = MySQLSquirrel.o MySquirrelUtils.o
 LINKOBJ = MySQLSquirrel.o MySquirrelUtils.o
 LIBS = 
-CXXINCS = -I"../../Groundfloor/trunk/include" -I/usr/local/mysql/mysql-include
+CXXINCS = -I"../include" -I/usr/local/mysql/mysql-include
 CXXFLAGS = $(CXXINCS) -ansi -fexceptions $(ARCHS)
 RM = rm -f
 

@@ -28,7 +28,7 @@ Supported/tested platforms:
  * Win32 (compiler VS2015)
  
 Supported/tested, but Makefiles not yet fixed before uploading to GitHub:
- * Linux
+ * Linux [![Build Status](https://travis-ci.org/partouf/Crosscables.svg?branch=master)](https://travis-ci.org/partouf/Crosscables)
  * MacOSX
  * FreeBSD
  * Solaris (no GUI)

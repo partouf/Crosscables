@@ -1,0 +1,121 @@
+# Project: Groundfloor
+# Makefile created by Dev-C++ 4.9.9.2 / modified for MacOSX
+
+CPP  = g++
+CC   = gcc
+RES  =
+OBJ  = Atoms/GFFreeable.o Atoms/GFCallable.o Atoms/GFLockable.o Atoms/GFMemFuncs.o Atoms/GFInitialize.o Molecules/GFString.o Molecules/GFVector.o Materials/GFFunctions.o Materials/GFThread.o Materials/GFFifoVector.o Materials/GFCallbackThread.o Materials/GFLogger.o Materials/GFThreadedBuffer.o Materials/GFDirectory.o Materials/GFGarbageCollector.o Materials/GFFileWriter.o Materials/GFCsvSettings.o Molecules/GFCallbacks.o Molecules/GFProperty.o Bookshelfs/GFBFields.o Bookshelfs/GFBField.o Bookshelfs/GFBValue.o Bookshelfs/GFBRecords.o Bookshelfs/GFBRecord.o Bookshelfs/GFBTable.o Bookshelfs/GFBFunctions.o Bookshelfs/GFBAttribute.o Bookshelfs/GFBNode.o Bookshelfs/RemoteSquirrel.o Molecules/GFStringVector.o Molecules/GFBaseCommunicator.o Materials/GFFileCommunicator.o Materials/GFStringLookup.o $(RES)
+BIN  = libGroundfloor.a
+CXXFLAGS =  -ansi -fexceptions -nostdlib $(ARCHS)
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before libGroundfloor.a all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	ar r $(BIN) $(OBJ)
+	ranlib $(BIN)
+
+Atoms/GFFreeable.o: Atoms/GFFreeable.cpp
+	$(CPP) -c Atoms/GFFreeable.cpp -o Atoms/GFFreeable.o $(CXXFLAGS)
+
+Molecules/GFString.o: Molecules/GFString.cpp
+	$(CPP) -c Molecules/GFString.cpp -o Molecules/GFString.o $(CXXFLAGS)
+
+Molecules/GFVector.o: Molecules/GFVector.cpp
+	$(CPP) -c Molecules/GFVector.cpp -o Molecules/GFVector.o $(CXXFLAGS)
+
+Materials/GFFunctions.o: Materials/GFFunctions.cpp
+	$(CPP) -c Materials/GFFunctions.cpp -o Materials/GFFunctions.o $(CXXFLAGS)
+
+Materials/GFThread.o: Materials/GFThread.cpp
+	$(CPP) -c Materials/GFThread.cpp -o Materials/GFThread.o $(CXXFLAGS)
+
+Materials/GFCallbackThread.o: Materials/GFCallbackThread.cpp
+	$(CPP) -c Materials/GFCallbackThread.cpp -o Materials/GFCallbackThread.o $(CXXFLAGS)
+
+Atoms/GFCallable.o: Atoms/GFCallable.cpp
+	$(CPP) -c Atoms/GFCallable.cpp -o Atoms/GFCallable.o $(CXXFLAGS)
+
+Atoms/GFLockable.o: Atoms/GFLockable.cpp
+	$(CPP) -c Atoms/GFLockable.cpp -o Atoms/GFLockable.o $(CXXFLAGS)
+
+Materials/GFFifoVector.o: Materials/GFFifoVector.cpp
+	$(CPP) -c Materials/GFFifoVector.cpp -o Materials/GFFifoVector.o $(CXXFLAGS)
+
+Materials/GFLogger.o: Materials/GFLogger.cpp
+	$(CPP) -c Materials/GFLogger.cpp -o Materials/GFLogger.o $(CXXFLAGS)
+
+Materials/GFThreadedBuffer.o: Materials/GFThreadedBuffer.cpp
+	$(CPP) -c Materials/GFThreadedBuffer.cpp -o Materials/GFThreadedBuffer.o $(CXXFLAGS)
+
+Materials/GFDirectory.o: Materials/GFDirectory.cpp
+	$(CPP) -c Materials/GFDirectory.cpp -o Materials/GFDirectory.o $(CXXFLAGS)
+
+Materials/GFGarbageCollector.o: Materials/GFGarbageCollector.cpp
+	$(CPP) -c Materials/GFGarbageCollector.cpp -o Materials/GFGarbageCollector.o $(CXXFLAGS)
+
+Materials/GFStringLookup.o: Materials/GFStringLookup.cpp
+	$(CPP) -c Materials/GFStringLookup.cpp -o Materials/GFStringLookup.o $(CXXFLAGS)
+
+Molecules/GFCallbacks.o: Molecules/GFCallbacks.cpp
+	$(CPP) -c Molecules/GFCallbacks.cpp -o Molecules/GFCallbacks.o $(CXXFLAGS)
+
+Molecules/GFProperty.o: Molecules/GFProperty.cpp
+	$(CPP) -c Molecules/GFProperty.cpp -o Molecules/GFProperty.o $(CXXFLAGS)
+
+Bookshelfs/GFBFields.o: Bookshelfs/GFBFields.cpp
+	$(CPP) -c Bookshelfs/GFBFields.cpp -o Bookshelfs/GFBFields.o $(CXXFLAGS)
+
+Bookshelfs/GFBField.o: Bookshelfs/GFBField.cpp
+	$(CPP) -c Bookshelfs/GFBField.cpp -o Bookshelfs/GFBField.o $(CXXFLAGS)
+
+Bookshelfs/GFBValue.o: Bookshelfs/GFBValue.cpp
+	$(CPP) -c Bookshelfs/GFBValue.cpp -o Bookshelfs/GFBValue.o $(CXXFLAGS)
+
+Bookshelfs/GFBRecords.o: Bookshelfs/GFBRecords.cpp
+	$(CPP) -c Bookshelfs/GFBRecords.cpp -o Bookshelfs/GFBRecords.o $(CXXFLAGS)
+
+Bookshelfs/GFBRecord.o: Bookshelfs/GFBRecord.cpp
+	$(CPP) -c Bookshelfs/GFBRecord.cpp -o Bookshelfs/GFBRecord.o $(CXXFLAGS)
+
+Bookshelfs/GFBTable.o: Bookshelfs/GFBTable.cpp
+	$(CPP) -c Bookshelfs/GFBTable.cpp -o Bookshelfs/GFBTable.o $(CXXFLAGS)
+
+Materials/GFFileWriter.o: Materials/GFFileWriter.cpp
+	$(CPP) -c Materials/GFFileWriter.cpp -o Materials/GFFileWriter.o $(CXXFLAGS)
+
+Materials/GFCsvSettings.o: Materials/GFCsvSettings.cpp
+	$(CPP) -c Materials/GFCsvSettings.cpp -o Materials/GFCsvSettings.o $(CXXFLAGS)
+
+Bookshelfs/GFBFunctions.o: Bookshelfs/GFBFunctions.cpp
+	$(CPP) -c Bookshelfs/GFBFunctions.cpp -o Bookshelfs/GFBFunctions.o $(CXXFLAGS)
+
+Molecules/GFStringVector.o: Molecules/GFStringVector.cpp
+	$(CPP) -c Molecules/GFStringVector.cpp -o Molecules/GFStringVector.o $(CXXFLAGS)
+
+Molecules/GFBaseCommunicator.o: Molecules/GFBaseCommunicator.cpp
+	$(CPP) -c Molecules/GFBaseCommunicator.cpp -o Molecules/GFBaseCommunicator.o $(CXXFLAGS)
+
+Materials/GFFileCommunicator.o: Materials/GFFileCommunicator.cpp
+	$(CPP) -c Materials/GFFileCommunicator.cpp -o Materials/GFFileCommunicator.o $(CXXFLAGS)
+
+Atoms/GFMemFuncs.o: Atoms/GFMemFuncs.cpp
+	$(CPP) -c Atoms/GFMemFuncs.cpp -o Atoms/GFMemFuncs.o $(CXXFLAGS)
+
+Atoms/GFInitialize.o: Atoms/GFInitialize.cpp
+	$(CPP) -c Atoms/GFInitialize.cpp -o Atoms/GFInitialize.o $(CXXFLAGS)
+
+Bookshelfs/GFBAttribute.o: Bookshelfs/GFBAttribute.cpp
+	$(CPP) -c Bookshelfs/GFBAttribute.cpp -o Bookshelfs/GFBAttribute.o $(CXXFLAGS)
+
+Bookshelfs/GFBNode.o: Bookshelfs/GFBNode.cpp
+	$(CPP) -c Bookshelfs/GFBNode.cpp -o Bookshelfs/GFBNode.o $(CXXFLAGS)
+
+Bookshelfs/RemoteSquirrel.o: Bookshelfs/RemoteSquirrel.cpp
+	$(CPP) -c Bookshelfs/RemoteSquirrel.cpp -o Bookshelfs/RemoteSquirrel.o $(CXXFLAGS)

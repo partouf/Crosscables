@@ -1,0 +1,63 @@
+# Project: libJumpropes
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++
+CC   = gcc
+OBJ  = JRBaseSocket.o JRClientSocket.o JRServerSocket.o JRThreadedConnection.o JRThreadedServer.o JRThreadedSender.o JRInitialize.o JRURI.o JRFunctions.o JRNetAddress.o JRLookupCache.o Common/JRHttpConnection.o Common/JRHttpClient.o $(RES)
+LINKOBJ  = JRBaseSocket.o JRClientSocket.o JRServerSocket.o JRThreadedConnection.o JRThreadedServer.o JRThreadedSender.o JRInitialize.o JRURI.o JRFunctions.o JRNetAddress.o JRLookupCache.o Common/JRHttpConnection.o Common/JRHttpClient.o $(RES)
+LIBS =  -nostdlib
+CXXINCS =  -I"../../Groundfloor/trunk/include" 
+BIN  = libJumpropes.a
+CXXFLAGS = $(CXXINCS)   -ansi -fexceptions -nostdlib $(ARCHS)
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before libJumpropes.a all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	ar r $(BIN) $(LINKOBJ)
+	ranlib $(BIN)
+
+JRBaseSocket.o: JRBaseSocket.cpp
+	$(CPP) -c JRBaseSocket.cpp -o JRBaseSocket.o $(CXXFLAGS)
+
+JRClientSocket.o: JRClientSocket.cpp
+	$(CPP) -c JRClientSocket.cpp -o JRClientSocket.o $(CXXFLAGS)
+
+JRServerSocket.o: JRServerSocket.cpp
+	$(CPP) -c JRServerSocket.cpp -o JRServerSocket.o $(CXXFLAGS)
+
+JRThreadedConnection.o: JRThreadedConnection.cpp
+	$(CPP) -c JRThreadedConnection.cpp -o JRThreadedConnection.o $(CXXFLAGS)
+
+JRThreadedServer.o: JRThreadedServer.cpp
+	$(CPP) -c JRThreadedServer.cpp -o JRThreadedServer.o $(CXXFLAGS)
+
+JRThreadedSender.o: JRThreadedSender.cpp
+	$(CPP) -c JRThreadedSender.cpp -o JRThreadedSender.o $(CXXFLAGS)
+
+JRInitialize.o: JRInitialize.cpp
+	$(CPP) -c JRInitialize.cpp -o JRInitialize.o $(CXXFLAGS)
+
+JRURI.o: JRURI.cpp
+	$(CPP) -c JRURI.cpp -o JRURI.o $(CXXFLAGS)
+
+Common/JRHttpConnection.o: Common/JRHttpConnection.cpp
+	$(CPP) -c Common/JRHttpConnection.cpp -o Common/JRHttpConnection.o $(CXXFLAGS)
+
+Common/JRHttpClient.o: Common/JRHttpClient.cpp
+	$(CPP) -c Common/JRHttpClient.cpp -o Common/JRHttpClient.o $(CXXFLAGS)
+
+JRFunctions.o: JRFunctions.cpp
+	$(CPP) -c JRFunctions.cpp -o JRFunctions.o $(CXXFLAGS)
+
+JRNetAddress.o: JRNetAddress.cpp
+	$(CPP) -c JRNetAddress.cpp -o JRNetAddress.o $(CXXFLAGS)
+
+JRLookupCache.o: JRLookupCache.cpp
+	$(CPP) -c JRLookupCache.cpp -o JRLookupCache.o $(CXXFLAGS)

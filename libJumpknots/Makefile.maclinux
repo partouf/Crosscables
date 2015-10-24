@@ -1,0 +1,32 @@
+# Project: libJumpknots
+
+CPP  = g++
+CC   = gcc
+OBJ  = JKBaseSocket.o JKClientSocket.o JKInitialize.o $(RES)
+LINKOBJ  = JKBaseSocket.o JKClientSocket.o JKInitialize.o $(RES)
+LIBS =  -nostdlib
+CXXINCS =  -I"../../Groundfloor/trunk/include" -I"../../Jumpropes/trunk/include" 
+BIN  = libJumpknots.a
+CXXFLAGS = $(CXXINCS)   -ansi -fexceptions -nostdlib $(ARCHS)
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before libJumpknots.a all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	ar r $(BIN) $(LINKOBJ)
+	ranlib $(BIN)
+
+JKBaseSocket.o: JKBaseSocket.cpp
+	$(CPP) -c JKBaseSocket.cpp -o JKBaseSocket.o $(CXXFLAGS)
+
+JKClientSocket.o: JKClientSocket.cpp
+	$(CPP) -c JKClientSocket.cpp -o JKClientSocket.o $(CXXFLAGS)
+
+JKInitialize.o: JKInitialize.cpp
+	$(CPP) -c JKInitialize.cpp -o JKInitialize.o $(CXXFLAGS)

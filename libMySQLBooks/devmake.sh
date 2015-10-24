@@ -1,7 +1,6 @@
 #!/bin/sh
 
-mkdir include
-mkdir include/MySQLBooks
+mkdir ../include/MySQLBooks
 
-cp *.h include/MySQLBooks
+cp *.h ../include/MySQLBooks
 

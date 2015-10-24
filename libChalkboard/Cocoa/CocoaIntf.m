@@ -258,7 +258,7 @@ void addToRadiogroup( id parent, id button ) {
       if ( menuclickeventfunction != 0 ) {
          menuclickeventfunction( (unsigned long)sender, 0 );
       } else {
-         NSLog( @"menuclick %d", sender );
+         NSLog( @"menuclick %d", (unsigned long)sender );
       }
    }
    - (void) buttonClick:(id)sender {
@@ -266,7 +266,7 @@ void addToRadiogroup( id parent, id button ) {
          CBCocoaButton *button = (CBCocoaButton *)sender;
          clickeventfunction( (unsigned long)sender, [button getCustomId] );
       } else {
-         NSLog( @"buttonclick %d", sender );
+         NSLog( @"buttonclick %d", (unsigned long)sender );
       }
    }
    - (void) comboClick:(id)sender {
@@ -274,7 +274,7 @@ void addToRadiogroup( id parent, id button ) {
          CBCocoaCombobox *combo = (CBCocoaCombobox *)sender;
          clickeventfunction( (unsigned long)sender, [combo getCustomId] );
       } else {
-         NSLog( @"comboclick %d", sender );
+         NSLog( @"comboclick %d", (unsigned long)sender );
       }
    }
    - (void) radiobuttonClick:(id)sender {
@@ -295,7 +295,7 @@ void addToRadiogroup( id parent, id button ) {
 
          clickeventfunction( (unsigned long)sender, [button getCustomId] );
       } else {
-         NSLog( @"radiobuttonclick %d", sender );
+         NSLog( @"radiobuttonclick %d", (unsigned long)sender );
       }
    }
    - (void) applicationWillFinishLaunching: (NSNotification *)notif {
@@ -311,7 +311,7 @@ void addToRadiogroup( id parent, id button ) {
          CBCocoaTabViewItem *tab = (CBCocoaTabViewItem *)tabViewItem;
          tabselecteventfunction( [view getCustomId], [tab getCustomId] );
       } else {
-         NSLog( @"tabselectevent %d", tabView );
+         NSLog( @"tabselectevent %d", (unsigned long)tabView );
       }
    }
 @end
@@ -387,7 +387,7 @@ void addToRadiogroup( id parent, id button ) {
    - (void)setVisible:(bool)bVisible {
    }
    - (void)mouseDown:(NSEvent *)theEvent {
-      if ( [theEvent modifierFlags] & NSCommandKeyMask != 0 ) {
+      if ( [theEvent modifierFlags] & (NSCommandKeyMask != 0) ) {
          [super mouseDown: theEvent];
 
          if ( contextMenu != nil ) {
@@ -421,7 +421,7 @@ void addToRadiogroup( id parent, id button ) {
    - (void)setVisible:(bool)bVisible {
    }
    - (void)mouseDown:(NSEvent *)theEvent {
-      if ( [theEvent modifierFlags] & NSCommandKeyMask != 0 ) {
+      if ( [theEvent modifierFlags] & (NSCommandKeyMask != 0) ) {
          [super mouseDown: theEvent];
 
          if ( contextMenu != nil ) {
@@ -467,7 +467,7 @@ void addToRadiogroup( id parent, id button ) {
    - (void)setVisible:(bool)bVisible {
    }
    - (void)mouseDown:(NSEvent *)theEvent {
-      if ( [theEvent modifierFlags] & NSCommandKeyMask != 0 ) {
+      if ( [theEvent modifierFlags] & (NSCommandKeyMask != 0) ) {
          [super mouseDown: theEvent];
 
          if ( contextMenu != nil ) {
@@ -593,6 +593,8 @@ void addToRadiogroup( id parent, id button ) {
       functionGetValue = nil;
       functionGetCustomValue = nil;
       functionSetCustomValue = nil;
+
+	  return self;
    }
    - (void)setthecustomid:(unsigned long)customid {
       thecustomid = customid;

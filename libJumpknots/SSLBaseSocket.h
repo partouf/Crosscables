@@ -18,7 +18,7 @@ namespace Jumpknots {
 #ifdef GF_OS_WIN32
       const SSL_METHOD *method;
 #else
-      SSL_METHOD *method;
+      const SSL_METHOD *method;
 #endif
       SSL_CTX *ctx;
       SSL *ssl;

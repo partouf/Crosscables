@@ -1,0 +1,1 @@
+Copy mysql and openssl lib/o files to here.

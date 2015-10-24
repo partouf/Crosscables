@@ -1,0 +1,1 @@
+Copy mysql and openssl header files to its respective directories in here.

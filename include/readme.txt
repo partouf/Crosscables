@@ -1,0 +1,1 @@
+Only the copied header files end up in this directory.

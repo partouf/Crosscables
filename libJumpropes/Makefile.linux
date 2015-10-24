@@ -3,10 +3,10 @@
 
 CPP = g++
 CC = gcc
-OBJ = JRBaseSocket.o JRClientSocket.o JRServerSocket.o JRThreadedConnection.o JRThreadedServer.o JRThreadedSender.o JRInitialize.o JRURI.o JRFunctions.o JRNetAddress.o JRLookupCache.o Common/JRHttpConnection.o Common/JRHttpClient.o $(RES)
-LINKOBJ = JRBaseSocket.o JRClientSocket.o JRServerSocket.o JRThreadedConnection.o JRThreadedServer.o JRThreadedSender.o JRInitialize.o JRURI.o JRFunctions.o JRNetAddress.o JRLookupCache.o Common/JRHttpConnection.o Common/JRHttpClient.o $(RES)
+OBJ = BaseSocket.o ClientSocket.o ServerSocket.o ThreadedConnection.o ThreadedServer.o ThreadedSender.o Initialize.o URI.o Functions.o NetAddress.o LookupCache.o Common/HttpConnection.o Common/HttpClient.o $(RES)
+LINKOBJ = BaseSocket.o ClientSocket.o ServerSocket.o ThreadedConnection.o ThreadedServer.o ThreadedSender.o Initialize.o URI.o Functions.o NetAddress.o LookupCache.o Common/HttpConnection.o Common/HttpClient.o $(RES)
 LIBS = -nostdlib
-CXXINCS = -I"../../Groundfloor/trunk/include"
+CXXINCS = -I"../include/"
 BIN  = libJumpropes.a
 CXXFLAGS = $(CXXINCS) -ansi -fexceptions -nostdlib
 RM = rm -f
@@ -28,42 +28,42 @@ $(BIN): $(LINKOBJ)
 	ar r $(BIN) $(LINKOBJ)
 	ranlib $(BIN)
 
-JRBaseSocket.o: JRBaseSocket.cpp
-	$(CPP) -c JRBaseSocket.cpp -o JRBaseSocket.o $(CXXFLAGS)
+BaseSocket.o: BaseSocket.cpp
+	$(CPP) -c BaseSocket.cpp -o BaseSocket.o $(CXXFLAGS)
 
-JRClientSocket.o: JRClientSocket.cpp
-	$(CPP) -c JRClientSocket.cpp -o JRClientSocket.o $(CXXFLAGS)
+ClientSocket.o: ClientSocket.cpp
+	$(CPP) -c ClientSocket.cpp -o ClientSocket.o $(CXXFLAGS)
 
-JRServerSocket.o: JRServerSocket.cpp
-	$(CPP) -c JRServerSocket.cpp -o JRServerSocket.o $(CXXFLAGS)
+ServerSocket.o: ServerSocket.cpp
+	$(CPP) -c ServerSocket.cpp -o ServerSocket.o $(CXXFLAGS)
 
-JRThreadedConnection.o: JRThreadedConnection.cpp
-	$(CPP) -c JRThreadedConnection.cpp -o JRThreadedConnection.o $(CXXFLAGS)
+ThreadedConnection.o: ThreadedConnection.cpp
+	$(CPP) -c ThreadedConnection.cpp -o ThreadedConnection.o $(CXXFLAGS)
 
-JRThreadedServer.o: JRThreadedServer.cpp
-	$(CPP) -c JRThreadedServer.cpp -o JRThreadedServer.o $(CXXFLAGS)
+ThreadedServer.o: ThreadedServer.cpp
+	$(CPP) -c ThreadedServer.cpp -o ThreadedServer.o $(CXXFLAGS)
 
-JRThreadedSender.o: JRThreadedSender.cpp
-	$(CPP) -c JRThreadedSender.cpp -o JRThreadedSender.o $(CXXFLAGS)
+ThreadedSender.o: ThreadedSender.cpp
+	$(CPP) -c ThreadedSender.cpp -o ThreadedSender.o $(CXXFLAGS)
 
-JRInitialize.o: JRInitialize.cpp
-	$(CPP) -c JRInitialize.cpp -o JRInitialize.o $(CXXFLAGS)
+Initialize.o: Initialize.cpp
+	$(CPP) -c Initialize.cpp -o Initialize.o $(CXXFLAGS)
 
-JRURI.o: JRURI.cpp
-	$(CPP) -c JRURI.cpp -o JRURI.o $(CXXFLAGS)
+URI.o: URI.cpp
+	$(CPP) -c URI.cpp -o URI.o $(CXXFLAGS)
 
-Common/JRHttpConnection.o: Common/JRHttpConnection.cpp
-	$(CPP) -c Common/JRHttpConnection.cpp -o Common/JRHttpConnection.o $(CXXFLAGS)
+Common/HttpConnection.o: Common/HttpConnection.cpp
+	$(CPP) -c Common/HttpConnection.cpp -o Common/HttpConnection.o $(CXXFLAGS)
 
-Common/JRHttpClient.o: Common/JRHttpClient.cpp
-	$(CPP) -c Common/JRHttpClient.cpp -o Common/JRHttpClient.o $(CXXFLAGS)
+Common/HttpClient.o: Common/HttpClient.cpp
+	$(CPP) -c Common/HttpClient.cpp -o Common/HttpClient.o $(CXXFLAGS)
 
-JRFunctions.o: JRFunctions.cpp
-	$(CPP) -c JRFunctions.cpp -o JRFunctions.o $(CXXFLAGS)
+Functions.o: Functions.cpp
+	$(CPP) -c Functions.cpp -o Functions.o $(CXXFLAGS)
 
-JRNetAddress.o: JRNetAddress.cpp
-	$(CPP) -c JRNetAddress.cpp -o JRNetAddress.o $(CXXFLAGS)
+NetAddress.o: NetAddress.cpp
+	$(CPP) -c NetAddress.cpp -o NetAddress.o $(CXXFLAGS)
 
-JRLookupCache.o: JRLookupCache.cpp
-	$(CPP) -c JRLookupCache.cpp -o JRLookupCache.o $(CXXFLAGS)
+LookupCache.o: LookupCache.cpp
+	$(CPP) -c LookupCache.cpp -o LookupCache.o $(CXXFLAGS)
 

@@ -69,5 +69,5 @@ fi
 
 make -f $makefile clean
 sh devmake.sh
-BUILDEXITCODE=`env ARCHS="$ARCHS" make -f $makefile`
+env ARCHS="$ARCHS" make -f $makefile
 exit $?

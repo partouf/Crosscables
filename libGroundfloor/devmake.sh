@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DESTDIR=include/Groundfloor
+DESTDIR=../include/Groundfloor
 
 mkdir -p $DESTDIR
     
@@ -19,5 +19,5 @@ cp $DIR2/*.h $DESTDIR/$DIR2
 cp $DIR3/*.h $DESTDIR/$DIR3
 cp $DIR4/*.h $DESTDIR/$DIR4
 
-doxygen Groundfloor.Doxyfile
+#doxygen Groundfloor.Doxyfile
 

@@ -1,6 +1,5 @@
 os:
   - linux
-  - osx
 language: cpp
 compiler: gcc
 script: cd libGroundfloor && sh build.sh && cd ../libJumpropes && sh build.sh && cd ../libJumpknots && sh build.sh && cd ../libMySQLBooks && sh build.sh

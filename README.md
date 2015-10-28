@@ -18,12 +18,11 @@ Currently included:
  * libJumpropes - a Networking library
  * libJumpknots - an SSL extension to libJumpropes (Requires OpenSSL)
  * libMySQLBooks - a MySQL database connectivity library (Requires the MySQL C API)
+ * libChalkboard - GUI library for all platforms using native Windows and GTK controls (MacOSX Cocoa bindings are broken)
  
 Included, but not yet uploaded:
  * libPostgreSQLBooks - PostgreSQL, Not yet uploaded
- * libChalkboard - GUI library for all platforms using native Windows, Cocoa and GTK controls
 
- 
 Supported/tested platforms:
  * Win32 (compiler VS2015)
  * Linux [![Build Status](https://travis-ci.org/partouf/Crosscables.svg?branch=master)](https://travis-ci.org/partouf/Crosscables)

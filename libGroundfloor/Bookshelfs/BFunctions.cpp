@@ -796,7 +796,7 @@ Groundfloor::BNode *Groundfloor::BCsvImport_FromFile(const Groundfloor::String *
             recsep = buf.pos(i, &aSettings->sep_record);
          }
 
-         int minimum = MAXINT;
+         int minimum = INT_MAX;
          if (strsep != -1) {
             strsep -= i;
             minimum = min(strsep, minimum);

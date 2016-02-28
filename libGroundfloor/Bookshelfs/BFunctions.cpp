@@ -3,6 +3,7 @@
 
 #include "../Materials/FileWriter.h"
 #include "../Materials/Functions.h"
+#include <limits.h>
 
 //-----------------------------------------------------------------------------
 

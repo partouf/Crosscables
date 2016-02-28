@@ -48,6 +48,8 @@ namespace Groundfloor {
 	   /// Destructor, frees memory and optionally deletes all containing objects.
 	   ~Vector();
 
+      void setPreAlloc(unsigned int iPreAlloc);
+
 	   /// Adds an object to the end of the array, resizing if necessary.
 	   int addElement(Freeable *pElement );
 	   /// Inserts the pointer to pElement at the first position that is not occupied by another element.

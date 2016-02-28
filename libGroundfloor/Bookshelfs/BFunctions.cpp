@@ -91,11 +91,15 @@ void Groundfloor::BCsvExport_Table(const String *sDestination, const BTable *aSo
 //-----------------------------------------------------------------------------
 
 void BXmlExport_NodeIteration(Groundfloor::BaseWriter *fw, Groundfloor::BNode *aSource, Groundfloor::XmlSettings *aSettings) {
-   bool bIsTag = (aSource->name.getLength() != 0);
+   unsigned int tagnamelen = aSource->name.getLength();
+   bool bIsTag = (tagnamelen != 0);
 
    if (bIsTag) {
-      fw->add(&aSettings->node_open);
-      fw->add(&aSource->name);
+      Groundfloor::String opener;
+      opener.setSize(tagnamelen + 2);
+      opener.append(&aSettings->node_open);
+      opener.append(&aSource->name);
+      fw->add(&opener);
 
       if (aSource->childCount() != 0) {
          if (aSource->attributeCount() > 0) {
@@ -123,7 +127,7 @@ void BXmlExport_NodeIteration(Groundfloor::BaseWriter *fw, Groundfloor::BNode *a
          bool bMayWriteSeperator = false;
 
          unsigned int d = aSource->childCount();
-         for (unsigned int j = 0; j < d; j++) {
+         for (unsigned int j = 0; j < d; ++j) {
             Groundfloor::BNode *aChild = aSource->getChild(j);
             if (aChild != NULL) {
                if (aChild->name.getLength() != 0) {
@@ -134,14 +138,18 @@ void BXmlExport_NodeIteration(Groundfloor::BaseWriter *fw, Groundfloor::BNode *a
             }
          }
 
+         Groundfloor::String closer;
+         closer.setSize(255);
+
          if (bMayWriteSeperator) {
-            fw->add(&aSettings->sep_node);
+            closer.append(&aSettings->sep_node);
          }
 
-         fw->add(&aSettings->node_open);
-         fw->add(&aSettings->node_end);
-         fw->add(&aSource->name);
-         fw->add(&aSettings->node_close);
+         closer.append(&aSettings->node_open);
+         closer.append(&aSettings->node_end);
+         closer.append(&aSource->name);
+         closer.append(&aSettings->node_close);
+         fw->add(&closer);
       }
       else {
          if (aSource->attributeCount() > 0) {
@@ -166,21 +174,30 @@ void BXmlExport_NodeIteration(Groundfloor::BaseWriter *fw, Groundfloor::BNode *a
          }
 
          if (aSource->content.getLength() > 0) {
-            fw->add(&aSettings->node_close);
+            Groundfloor::String closer;
+            closer.setSize(aSource->content.getLength() + 255);
+
+            closer.append(&aSettings->node_close);
 
             Groundfloor::String tmp(&aSource->content);
             Groundfloor::EncodeHtmlEntities(&tmp);
-            fw->add(&tmp);
+            closer.append(&tmp);
 
-            fw->add(&aSettings->node_open);
-            fw->add(&aSettings->node_end);
-            fw->add(&aSource->name);
-            fw->add(&aSettings->node_close);
+            closer.append(&aSettings->node_open);
+            closer.append(&aSettings->node_end);
+            closer.append(&aSource->name);
+            closer.append(&aSettings->node_close);
+
+            fw->add(&closer);
          }
          else {
-            fw->add(&aSettings->node_space);
-            fw->add(&aSettings->node_end);
-            fw->add(&aSettings->node_close);
+            Groundfloor::String closer;
+            closer.setSize(255);
+            closer.append(&aSettings->node_space);
+            closer.append(&aSettings->node_end);
+            closer.append(&aSettings->node_close);
+
+            fw->add(&closer);
          }
       }
 
@@ -720,4 +737,146 @@ Groundfloor::BNode *Groundfloor::BTableToNodeAttributes(const BTable *aTable, co
    }
 
    return tablenode;
+}
+
+Groundfloor::BNode *Groundfloor::BCsvImport_FromFile(const Groundfloor::String *sSourceFile, const Groundfloor::CsvSettings *aSettings)
+{
+   Groundfloor::BNode *rootnode = new Groundfloor::BNode();
+
+   bool instring = false;
+   bool directquotemode = false;
+
+   Groundfloor::BNode *linenode = new Groundfloor::BNode("line");
+   Groundfloor::BNode *valnode = new Groundfloor::BNode("value");
+   linenode->addChildNode(valnode);
+   rootnode->addChildNode(linenode);
+
+   Groundfloor::BNode *colnames = NULL;
+   bool showcolnames = aSettings->show_columnnames.get();
+   if (showcolnames) {
+      colnames = linenode;
+   }
+
+   int colidx = 0;
+
+   Groundfloor::FileCommunicator fc;
+   fc.filename.set(sSourceFile->getValue());
+   fc.mode.set(GFFILEMODE_READ);
+   fc.connect();
+
+   Groundfloor::CommReturnData err;
+
+   Groundfloor::String buf;
+   while (!err.eof) {
+      buf.setSize(1024);
+      fc.receive(&buf, &err);
+
+      int i = 0;
+      int colsep, recsep, strsep;
+      while (i < buf.getLength()) {
+         strsep = buf.pos(i, &aSettings->sep_string);
+         colsep = buf.pos(i, &aSettings->sep_column);
+         recsep = buf.pos(i, &aSettings->sep_record);
+
+         if ((strsep == -1) && (colsep == -1) && (recsep == -1)) {
+            Groundfloor::String buf2;
+            buf2.setSize(20);
+            fc.receive(&buf2, &err);
+            buf.append(&buf2);
+
+            strsep = buf.pos(i, &aSettings->sep_string);
+            colsep = buf.pos(i, &aSettings->sep_column);
+            recsep = buf.pos(i, &aSettings->sep_record);
+         }
+
+         int minimum = MAXINT;
+         if (strsep != -1) {
+            strsep -= i;
+            minimum = min(strsep, minimum);
+         }
+         if (colsep != -1) {
+            colsep -= i;
+            minimum = min(colsep, minimum);
+         }
+         if (recsep != -1) {
+            recsep -= i;
+            minimum = min(recsep, minimum);
+         }
+
+         minimum = min(buf.getLength() - i, minimum);
+
+         if (minimum == 0) {
+            if (strsep == 0) {
+               if (directquotemode) {
+                  valnode->content.append(buf.getPointer(i), aSettings->sep_string.getLength());
+                  directquotemode = false;
+               }
+               i += aSettings->sep_string.getLength();
+               instring != instring;
+
+               if (!instring) directquotemode = true;
+            } else if (colsep == 0) {
+               if (!instring) {
+                  if (showcolnames && (linenode != colnames)) {
+                     Groundfloor::BNode *col;
+                     if (colidx < colnames->childCount()) {
+                        col = colnames->getChild(colidx);
+                        valnode = new Groundfloor::BNode(col->content.getValue());
+                     } else {
+                        valnode = new Groundfloor::BNode("unknown");
+                     }
+                     colidx++;
+                  } else {
+                     valnode = new Groundfloor::BNode("value");
+                  }
+                  
+                  linenode->addChildNode(valnode);
+               }
+               i += aSettings->sep_column.getLength();
+
+               directquotemode = false;
+            } else if (recsep == 0) {
+               if (!instring) {
+                  if (showcolnames) {
+                     linenode = new Groundfloor::BNode("line", colnames->childCount());
+                  } else {
+                     linenode = new Groundfloor::BNode("line");
+                  }
+                  rootnode->addChildNode(linenode);
+                  colidx = 0;
+
+                  if (showcolnames) {
+                     valnode = new Groundfloor::BNode(colnames->getChild(colidx)->content.getValue());
+                     colidx++;
+                  } else {
+                     valnode = new Groundfloor::BNode("value");
+                  }
+
+                  linenode->addChildNode(valnode);
+               }
+               i += aSettings->sep_record.getLength();
+
+               directquotemode = false;
+            }
+         } else {
+            valnode->content.append(buf.getPointer(i), minimum);
+
+            i += minimum;
+
+            directquotemode = false;
+         }
+      }
+   }
+
+   fc.disconnect();
+
+   if ((valnode->content.getLength() == 0) && (linenode->childCount() == 1)) {
+      linenode->unlinkChild(valnode);
+      rootnode->unlinkChild(linenode);
+
+      delete linenode;
+      delete valnode;
+   }
+
+   return rootnode;
 }

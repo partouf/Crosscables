@@ -19,6 +19,8 @@ namespace Groundfloor {
    BNode *BXmlImport_FromString(const String *sXML);
    BNode *BXmlImport_FromFile(const String *sSourceFile);
 
+   BNode *BCsvImport_FromFile(const String *sSourceFile, const CsvSettings *aSettings);
+
    /// lossy function to try and generate a table from Nodes (attributes are lost, contents are translated to recordvalues)
    BTable *BNodeContentsToTable(const BNode *aNode, int iDefaultDatatype = FLDTYPE_STRING);
    /// lossy function to try and generate a table from Nodes (attributes are translated to recordvalues, contents are lost)

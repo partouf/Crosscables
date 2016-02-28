@@ -40,8 +40,11 @@ void Groundfloor::FifoVector::push( Groundfloor::Freeable *obj ) {
          if ( (iCurrent > 0) && (iLastAdded == this->allocated() ) ) {
             this->replaceElement( 0, obj );
             iLastAdded = 0;
-         } else {
+         } else if (iLastAdded + 1  < this->allocated()) {
             this->insertAt( iLastAdded + 1, obj );
+            iLastAdded++;
+         } else {
+            this->addElement(obj);
             iLastAdded++;
          }
    

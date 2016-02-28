@@ -56,6 +56,10 @@ Groundfloor::Vector::Vector( unsigned int iPreAlloc ) : Freeable() {
    this->ptrsize = sizeof( void * );
 }
 
+void Groundfloor::Vector::setPreAlloc(unsigned int iPreAlloc) {
+   this->iPreAllocateCount = iPreAlloc;
+}
+
 Groundfloor::Vector::~Vector() {
    if ( this->paVector != NULL ) {
       if ( this->autoClear ) {

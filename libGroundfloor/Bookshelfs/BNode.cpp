@@ -69,16 +69,22 @@ void Groundfloor::BNodePath::readFromString( const char *sPath ) {
 
 //------------------------------------------------------------------------------
 
-Groundfloor::BNode::BNode() : Groundfloor::Freeable() {
+Groundfloor::BNode::BNode(unsigned int iChildrenPreAlloc) : Groundfloor::Freeable() {
    arrAttributes = NULL;
    arrChildren = NULL;
+
+   this->iChildrenPreAlloc = iChildrenPreAlloc;
+   this->iAttribPreAlloc = 3;
 }
 
-Groundfloor::BNode::BNode( const char *sName ) : Groundfloor::Freeable() {
+Groundfloor::BNode::BNode( const char *sName, unsigned int iChildrenPreAlloc) : Groundfloor::Freeable() {
    arrAttributes = NULL;
    arrChildren = NULL;
 
    parent = NULL;
+
+   this->iChildrenPreAlloc = iChildrenPreAlloc;
+   this->iAttribPreAlloc = 3;
 
    name.setValue_ansi( sName );
 }
@@ -98,7 +104,7 @@ Groundfloor::BNode *Groundfloor::BNode::getParentNode() {
 
 void Groundfloor::BNode::addAttribute( Groundfloor::BAttribute *anAttrib ) {
    if ( arrAttributes == NULL ) {
-      arrAttributes = new Groundfloor::Vector();
+      arrAttributes = new Groundfloor::Vector(this->iAttribPreAlloc);
    }
 
    arrAttributes->addElement( anAttrib );
@@ -106,11 +112,17 @@ void Groundfloor::BNode::addAttribute( Groundfloor::BAttribute *anAttrib ) {
 
 void Groundfloor::BNode::addChildNode( Groundfloor::BNode *aNode ) {
    if ( arrChildren == NULL ) {
-      arrChildren = new Groundfloor::Vector();
+      arrChildren = new Groundfloor::Vector(this->iChildrenPreAlloc);
    }
 
    arrChildren->addElement( aNode );
    aNode->parent = this;
+}
+
+void Groundfloor::BNode::unlinkChild(BNode *aChild) {
+   if (arrChildren != NULL) {
+      arrChildren->removeElement(aChild);
+   }
 }
 
 unsigned int Groundfloor::BNode::childCount() const {

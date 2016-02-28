@@ -4,6 +4,7 @@
 Groundfloor::ThreadedBuffer::ThreadedBuffer() : Groundfloor::Thread() {
    bDeleteAfterProcess = false;
    bStopWhenEmpty = false;
+   aBuffer.setPreAlloc(1024);
 }
 
 Groundfloor::ThreadedBuffer::~ThreadedBuffer() {

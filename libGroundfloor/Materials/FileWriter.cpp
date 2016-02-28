@@ -13,7 +13,7 @@ Groundfloor::BaseWriter::~BaseWriter() {
 }
 
 void Groundfloor::BaseWriter::add(const Groundfloor::Freeable *obj) {
-   Groundfloor::String *sDataCopy = new Groundfloor::String(static_cast<const Groundfloor::String *>(obj));
+    Groundfloor::String *sDataCopy = new Groundfloor::String(static_cast<const Groundfloor::String *>(obj));
 
    Groundfloor::ThreadedBuffer::add(sDataCopy);
 }
@@ -72,17 +72,18 @@ void Groundfloor::FileWriter::setFlushDirectly(bool yesno) {
 
 bool Groundfloor::FileWriter::processObject(Groundfloor::Freeable *obj) {
    Groundfloor::String *str = static_cast<Groundfloor::String *>(obj);
+   if (str != NULL) {
+      if (bAppendmode) {
+         file.connect();
+         file.send(str);
+         file.disconnect();
+      }
+      else {
+         file.send(str);
+      }
 
-   if (bAppendmode) {
-      file.connect();
-      file.send(str);
-      file.disconnect();
+      delete str;
    }
-   else {
-      file.send(str);
-   }
-
-   delete str;
 
    return true;
 }

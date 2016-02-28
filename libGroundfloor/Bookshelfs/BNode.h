@@ -51,11 +51,14 @@ namespace Groundfloor {
       Vector *arrChildren;
       BNode *parent;
 
+      unsigned int iChildrenPreAlloc;
+      unsigned int iAttribPreAlloc;
+
    public:
       /// initialize node with no name
-      BNode();
+      BNode(unsigned int iChildrenPreAlloc = 7);
       /// initialize node with given name
-      BNode(const char *sName);
+      BNode(const char *sName, unsigned int iChildrenPreAlloc = 7);
       /// automatically deletes all attributes and child-nodes
       ~BNode();
 
@@ -108,6 +111,7 @@ namespace Groundfloor {
       /// flatten all child contents into a newly allocated string
       String *flattenChildContent();
 
+      void unlinkChild(BNode *aChild);
    };
 }
 

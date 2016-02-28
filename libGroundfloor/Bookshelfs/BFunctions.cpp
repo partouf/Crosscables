@@ -266,7 +266,13 @@ void Groundfloor::BXmlExport_Node(const String *sDestination, BNode *aSource, Xm
 
 #include "../Materials/Functions.h"
 
-#define max(a,b) (((a) > (b)) ? (a) : (b))
+#ifndef max
+   #define max(a,b) (((a) > (b)) ? (a) : (b))
+#endif
+
+#ifndef min
+   #define min(a,b) (((a) < (b)) ? (a) : (b))
+#endif
 
 void parseAttributes(Groundfloor::BNode *node, const Groundfloor::String *s) {
    Groundfloor::String tmp;

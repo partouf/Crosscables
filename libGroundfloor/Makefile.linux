@@ -1,8 +1,6 @@
 # Project: Groundfloor
 # Makefile created by Dev-C++ 4.9.9.2 / modified for Linux
 
-CPP  = g++
-CC   = gcc
 LINKOBJ  = Atoms/Freeable.o Atoms/Callable.o Atoms/Lockable.o Atoms/Initialize.o Atoms/MemFuncs.o Molecules/String.o Molecules/Vector.o Materials/Functions.o Materials/Thread.o Materials/FifoVector.o Materials/CallbackThread.o Materials/Logger.o Materials/ThreadedBuffer.o Materials/Directory.o Materials/GarbageCollector.o Materials/FileWriter.o Materials/CsvSettings.o Molecules/Callbacks.o Molecules/Property.o Bookshelfs/BFields.o Bookshelfs/BField.o Bookshelfs/BValue.o Bookshelfs/BRecords.o Bookshelfs/BRecord.o Bookshelfs/BTable.o Bookshelfs/BFunctions.o Bookshelfs/BAttribute.o Bookshelfs/BNode.o Bookshelfs/RemoteSquirrel.o Molecules/StringVector.o Molecules/BaseCommunicator.o Materials/FileCommunicator.o Materials/StringLookup.o
 BIN  = libGroundfloor.a
 RM = rm -f
@@ -20,100 +18,100 @@ $(BIN): $(LINKOBJ)
 	ranlib $(BIN)
 
 Atoms/Freeable.o: Atoms/Freeable.cpp
-	$(CPP) -c Atoms/Freeable.cpp -o Atoms/Freeable.o $(CXXFLAGS)
+	$(CXX) -c Atoms/Freeable.cpp -o Atoms/Freeable.o $(CXXFLAGS)
 
 Molecules/String.o: Molecules/String.cpp
-	$(CPP) -c Molecules/String.cpp -o Molecules/String.o $(CXXFLAGS)
+	$(CXX) -c Molecules/String.cpp -o Molecules/String.o $(CXXFLAGS)
 
 Molecules/Vector.o: Molecules/Vector.cpp
-	$(CPP) -c Molecules/Vector.cpp -o Molecules/Vector.o $(CXXFLAGS)
+	$(CXX) -c Molecules/Vector.cpp -o Molecules/Vector.o $(CXXFLAGS)
 
 Materials/Functions.o: Materials/Functions.cpp
-	$(CPP) -c Materials/Functions.cpp -o Materials/Functions.o $(CXXFLAGS)
+	$(CXX) -c Materials/Functions.cpp -o Materials/Functions.o $(CXXFLAGS)
 
 Materials/Thread.o: Materials/Thread.cpp
-	$(CPP) -c Materials/Thread.cpp -o Materials/Thread.o $(CXXFLAGS)
+	$(CXX) -c Materials/Thread.cpp -o Materials/Thread.o $(CXXFLAGS)
 
 Materials/CallbackThread.o: Materials/CallbackThread.cpp
-	$(CPP) -c Materials/CallbackThread.cpp -o Materials/CallbackThread.o $(CXXFLAGS)
+	$(CXX) -c Materials/CallbackThread.cpp -o Materials/CallbackThread.o $(CXXFLAGS)
 
 Atoms/Callable.o: Atoms/Callable.cpp
-	$(CPP) -c Atoms/Callable.cpp -o Atoms/Callable.o $(CXXFLAGS)
+	$(CXX) -c Atoms/Callable.cpp -o Atoms/Callable.o $(CXXFLAGS)
 
 Atoms/Lockable.o: Atoms/Lockable.cpp
-	$(CPP) -c Atoms/Lockable.cpp -o Atoms/Lockable.o $(CXXFLAGS)
+	$(CXX) -c Atoms/Lockable.cpp -o Atoms/Lockable.o $(CXXFLAGS)
 
 Materials/FifoVector.o: Materials/FifoVector.cpp
-	$(CPP) -c Materials/FifoVector.cpp -o Materials/FifoVector.o $(CXXFLAGS)
+	$(CXX) -c Materials/FifoVector.cpp -o Materials/FifoVector.o $(CXXFLAGS)
 
 Materials/Logger.o: Materials/Logger.cpp
-	$(CPP) -c Materials/Logger.cpp -o Materials/Logger.o $(CXXFLAGS)
+	$(CXX) -c Materials/Logger.cpp -o Materials/Logger.o $(CXXFLAGS)
 
 Materials/ThreadedBuffer.o: Materials/ThreadedBuffer.cpp
-	$(CPP) -c Materials/ThreadedBuffer.cpp -o Materials/ThreadedBuffer.o $(CXXFLAGS)
+	$(CXX) -c Materials/ThreadedBuffer.cpp -o Materials/ThreadedBuffer.o $(CXXFLAGS)
 
 Materials/Directory.o: Materials/Directory.cpp
-	$(CPP) -c Materials/Directory.cpp -o Materials/Directory.o $(CXXFLAGS)
+	$(CXX) -c Materials/Directory.cpp -o Materials/Directory.o $(CXXFLAGS)
 
 Materials/GarbageCollector.o: Materials/GarbageCollector.cpp
-	$(CPP) -c Materials/GarbageCollector.cpp -o Materials/GarbageCollector.o $(CXXFLAGS)
+	$(CXX) -c Materials/GarbageCollector.cpp -o Materials/GarbageCollector.o $(CXXFLAGS)
 
 Molecules/Callbacks.o: Molecules/Callbacks.cpp
-	$(CPP) -c Molecules/Callbacks.cpp -o Molecules/Callbacks.o $(CXXFLAGS)
+	$(CXX) -c Molecules/Callbacks.cpp -o Molecules/Callbacks.o $(CXXFLAGS)
 
 Molecules/Property.o: Molecules/Property.cpp
-	$(CPP) -c Molecules/Property.cpp -o Molecules/Property.o $(CXXFLAGS)
+	$(CXX) -c Molecules/Property.cpp -o Molecules/Property.o $(CXXFLAGS)
 
 Bookshelfs/BFields.o: Bookshelfs/BFields.cpp
-	$(CPP) -c Bookshelfs/BFields.cpp -o Bookshelfs/BFields.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BFields.cpp -o Bookshelfs/BFields.o $(CXXFLAGS)
 
 Bookshelfs/BField.o: Bookshelfs/BField.cpp
-	$(CPP) -c Bookshelfs/BField.cpp -o Bookshelfs/BField.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BField.cpp -o Bookshelfs/BField.o $(CXXFLAGS)
 
 Bookshelfs/BValue.o: Bookshelfs/BValue.cpp
-	$(CPP) -c Bookshelfs/BValue.cpp -o Bookshelfs/BValue.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BValue.cpp -o Bookshelfs/BValue.o $(CXXFLAGS)
 
 Bookshelfs/BRecords.o: Bookshelfs/BRecords.cpp
-	$(CPP) -c Bookshelfs/BRecords.cpp -o Bookshelfs/BRecords.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BRecords.cpp -o Bookshelfs/BRecords.o $(CXXFLAGS)
 
 Bookshelfs/BRecord.o: Bookshelfs/BRecord.cpp
-	$(CPP) -c Bookshelfs/BRecord.cpp -o Bookshelfs/BRecord.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BRecord.cpp -o Bookshelfs/BRecord.o $(CXXFLAGS)
 
 Bookshelfs/BTable.o: Bookshelfs/BTable.cpp
-	$(CPP) -c Bookshelfs/BTable.cpp -o Bookshelfs/BTable.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BTable.cpp -o Bookshelfs/BTable.o $(CXXFLAGS)
 
 Materials/FileWriter.o: Materials/FileWriter.cpp
-	$(CPP) -c Materials/FileWriter.cpp -o Materials/FileWriter.o $(CXXFLAGS)
+	$(CXX) -c Materials/FileWriter.cpp -o Materials/FileWriter.o $(CXXFLAGS)
 
 Materials/CsvSettings.o: Materials/CsvSettings.cpp
-	$(CPP) -c Materials/CsvSettings.cpp -o Materials/CsvSettings.o $(CXXFLAGS)
+	$(CXX) -c Materials/CsvSettings.cpp -o Materials/CsvSettings.o $(CXXFLAGS)
 
 Materials/StringLookup.o: Materials/StringLookup.cpp
-	$(CPP) -c Materials/StringLookup.cpp -o Materials/StringLookup.o $(CXXFLAGS)
+	$(CXX) -c Materials/StringLookup.cpp -o Materials/StringLookup.o $(CXXFLAGS)
 
 Bookshelfs/BFunctions.o: Bookshelfs/BFunctions.cpp
-	$(CPP) -c Bookshelfs/BFunctions.cpp -o Bookshelfs/BFunctions.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BFunctions.cpp -o Bookshelfs/BFunctions.o $(CXXFLAGS)
 
 Molecules/StringVector.o: Molecules/StringVector.cpp
-	$(CPP) -c Molecules/StringVector.cpp -o Molecules/StringVector.o $(CXXFLAGS)
+	$(CXX) -c Molecules/StringVector.cpp -o Molecules/StringVector.o $(CXXFLAGS)
 
 Molecules/BaseCommunicator.o: Molecules/BaseCommunicator.cpp
-	$(CPP) -c Molecules/BaseCommunicator.cpp -o Molecules/BaseCommunicator.o $(CXXFLAGS)
+	$(CXX) -c Molecules/BaseCommunicator.cpp -o Molecules/BaseCommunicator.o $(CXXFLAGS)
 
 Materials/FileCommunicator.o: Materials/FileCommunicator.cpp
-	$(CPP) -c Materials/FileCommunicator.cpp -o Materials/FileCommunicator.o $(CXXFLAGS)
+	$(CXX) -c Materials/FileCommunicator.cpp -o Materials/FileCommunicator.o $(CXXFLAGS)
 
 Atoms/Initialize.o: Atoms/Initialize.cpp
-	$(CPP) -c Atoms/Initialize.cpp -o Atoms/Initialize.o $(CXXFLAGS)
+	$(CXX) -c Atoms/Initialize.cpp -o Atoms/Initialize.o $(CXXFLAGS)
 
 Atoms/MemFuncs.o: Atoms/MemFuncs.cpp
-	$(CPP) -c Atoms/MemFuncs.cpp -o Atoms/MemFuncs.o $(CXXFLAGS)
+	$(CXX) -c Atoms/MemFuncs.cpp -o Atoms/MemFuncs.o $(CXXFLAGS)
 
 Bookshelfs/BAttribute.o: Bookshelfs/BAttribute.cpp
-	$(CPP) -c Bookshelfs/BAttribute.cpp -o Bookshelfs/BAttribute.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BAttribute.cpp -o Bookshelfs/BAttribute.o $(CXXFLAGS)
 
 Bookshelfs/BNode.o: Bookshelfs/BNode.cpp
-	$(CPP) -c Bookshelfs/BNode.cpp -o Bookshelfs/BNode.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/BNode.cpp -o Bookshelfs/BNode.o $(CXXFLAGS)
 
 Bookshelfs/RemoteSquirrel.o: Bookshelfs/RemoteSquirrel.cpp
-	$(CPP) -c Bookshelfs/RemoteSquirrel.cpp -o Bookshelfs/RemoteSquirrel.o $(CXXFLAGS)
+	$(CXX) -c Bookshelfs/RemoteSquirrel.cpp -o Bookshelfs/RemoteSquirrel.o $(CXXFLAGS)

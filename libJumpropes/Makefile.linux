@@ -1,8 +1,6 @@
 # Project: libJumpropes
 # Makefile created by Dev-C++ 4.9.9.2
 
-CPP = g++
-CC = gcc
 OBJ = BaseSocket.o ClientSocket.o ServerSocket.o ThreadedConnection.o ThreadedServer.o ThreadedSender.o Initialize.o URI.o Functions.o NetAddress.o LookupCache.o Common/HttpConnection.o Common/HttpClient.o $(RES)
 LINKOBJ = BaseSocket.o ClientSocket.o ServerSocket.o ThreadedConnection.o ThreadedServer.o ThreadedSender.o Initialize.o URI.o Functions.o NetAddress.o LookupCache.o Common/HttpConnection.o Common/HttpClient.o $(RES)
 LIBS = -nostdlib
@@ -29,41 +27,41 @@ $(BIN): $(LINKOBJ)
 	ranlib $(BIN)
 
 BaseSocket.o: BaseSocket.cpp
-	$(CPP) -c BaseSocket.cpp -o BaseSocket.o $(CXXFLAGS)
+	$(CXX) -c BaseSocket.cpp -o BaseSocket.o $(CXXFLAGS)
 
 ClientSocket.o: ClientSocket.cpp
-	$(CPP) -c ClientSocket.cpp -o ClientSocket.o $(CXXFLAGS)
+	$(CXX) -c ClientSocket.cpp -o ClientSocket.o $(CXXFLAGS)
 
 ServerSocket.o: ServerSocket.cpp
-	$(CPP) -c ServerSocket.cpp -o ServerSocket.o $(CXXFLAGS)
+	$(CXX) -c ServerSocket.cpp -o ServerSocket.o $(CXXFLAGS)
 
 ThreadedConnection.o: ThreadedConnection.cpp
-	$(CPP) -c ThreadedConnection.cpp -o ThreadedConnection.o $(CXXFLAGS)
+	$(CXX) -c ThreadedConnection.cpp -o ThreadedConnection.o $(CXXFLAGS)
 
 ThreadedServer.o: ThreadedServer.cpp
-	$(CPP) -c ThreadedServer.cpp -o ThreadedServer.o $(CXXFLAGS)
+	$(CXX) -c ThreadedServer.cpp -o ThreadedServer.o $(CXXFLAGS)
 
 ThreadedSender.o: ThreadedSender.cpp
-	$(CPP) -c ThreadedSender.cpp -o ThreadedSender.o $(CXXFLAGS)
+	$(CXX) -c ThreadedSender.cpp -o ThreadedSender.o $(CXXFLAGS)
 
 Initialize.o: Initialize.cpp
-	$(CPP) -c Initialize.cpp -o Initialize.o $(CXXFLAGS)
+	$(CXX) -c Initialize.cpp -o Initialize.o $(CXXFLAGS)
 
 URI.o: URI.cpp
-	$(CPP) -c URI.cpp -o URI.o $(CXXFLAGS)
+	$(CXX) -c URI.cpp -o URI.o $(CXXFLAGS)
 
 Common/HttpConnection.o: Common/HttpConnection.cpp
-	$(CPP) -c Common/HttpConnection.cpp -o Common/HttpConnection.o $(CXXFLAGS)
+	$(CXX) -c Common/HttpConnection.cpp -o Common/HttpConnection.o $(CXXFLAGS)
 
 Common/HttpClient.o: Common/HttpClient.cpp
-	$(CPP) -c Common/HttpClient.cpp -o Common/HttpClient.o $(CXXFLAGS)
+	$(CXX) -c Common/HttpClient.cpp -o Common/HttpClient.o $(CXXFLAGS)
 
 Functions.o: Functions.cpp
-	$(CPP) -c Functions.cpp -o Functions.o $(CXXFLAGS)
+	$(CXX) -c Functions.cpp -o Functions.o $(CXXFLAGS)
 
 NetAddress.o: NetAddress.cpp
-	$(CPP) -c NetAddress.cpp -o NetAddress.o $(CXXFLAGS)
+	$(CXX) -c NetAddress.cpp -o NetAddress.o $(CXXFLAGS)
 
 LookupCache.o: LookupCache.cpp
-	$(CPP) -c LookupCache.cpp -o LookupCache.o $(CXXFLAGS)
+	$(CXX) -c LookupCache.cpp -o LookupCache.o $(CXXFLAGS)
 

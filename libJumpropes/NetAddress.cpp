@@ -83,11 +83,11 @@ in6_addr *Jumpropes::IPAddress::getIPv6AddressPtr() {
    return reinterpret_cast<in6_addr *>( &addressbytes );
 }
 
-void Jumpropes::IPAddress::setAsIPv4Address( in_addr *address ) {
+void Jumpropes::IPAddress::setAsIPv4Address( const in_addr *address ) {
    memset( this->addressbytes, 0, 16 );
    memcpy( this->addressbytes, address, 4 );
 }
 
-void Jumpropes::IPAddress::setAsIPv6Address( in6_addr *address ) {
+void Jumpropes::IPAddress::setAsIPv6Address(const in6_addr *address ) {
    memcpy( this->addressbytes, address, 16 );
 }

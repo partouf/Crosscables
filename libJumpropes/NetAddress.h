@@ -47,8 +47,8 @@ namespace Jumpropes {
       in_addr *getIPv4AddressPtr();
       in6_addr *getIPv6AddressPtr();
 
-      void setAsIPv4Address(in_addr *address);
-      void setAsIPv6Address(in6_addr *address);
+      void setAsIPv4Address(const in_addr *address);
+      void setAsIPv6Address(const in6_addr *address);
 
       unsigned short family;
       String ip;

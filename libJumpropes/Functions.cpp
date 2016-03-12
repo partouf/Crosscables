@@ -281,6 +281,34 @@ int inet_pton( int af, const char *src, void *dst ) {
 #endif
 
 
+bool Jumpropes::SetAndResolveIP(IPAddress *IP, const sockaddr *address)
+{
+   IP->family = address->sa_family;
+
+   if (IP->family == AF_INET)
+   {
+      IP->setAsIPv4Address(&reinterpret_cast<const sockaddr_in *>(address)->sin_addr);
+
+      IP->ip.setSize(INET_ADDRSTRLEN);
+      inet_ntop(IP->family, IP->getIPv4AddressPtr(), IP->ip.getPointer(0), INET_ADDRSTRLEN);
+      IP->ip.trimzero_ansi();
+
+      return true;
+   }
+   else if (IP->family == AF_INET6)
+   {
+      IP->setAsIPv6Address(&reinterpret_cast<const sockaddr_in6 *>(address)->sin6_addr);
+
+      IP->ip.setSize(INET6_ADDRSTRLEN);
+      inet_ntop(IP->family, IP->getIPv6AddressPtr(), IP->ip.getPointer(0), INET6_ADDRSTRLEN);
+      IP->ip.trimzero_ansi();
+
+      return true;
+   }
+
+   return false;
+}
+
 bool JRresolveAllWithGetAddrInfo(Jumpropes::LookupObject *aDestIpArray ) {
    bool bSuccess = false;
    addrinfo aiHints;
@@ -371,4 +399,59 @@ bool Jumpropes::JRresolveAll( LookupObject *aDestIpArray ) {
    }
 
    return bSuccess;
+}
+
+bool Jumpropes::TryToGetComputerName(String *PComputername)
+{
+   PComputername->setLength(1024);
+   if (gethostname(PComputername->getPointer(0), 1024) == 0)
+   {
+      PComputername->trimzero_ansi();
+
+      return true;
+   }
+   else
+   {
+      PComputername->setLength(0);
+
+      return false;
+   }
+}
+
+std::vector<Jumpropes::NetInterface> Jumpropes::ListNetworkInterfaces()
+{
+   std::vector<Jumpropes::NetInterface> List;
+
+   String Computername;
+   if (!TryToGetComputerName(&Computername))
+   {
+      return List;
+   }
+
+   struct addrinfo hints, *ifa;
+   int err;
+
+   memset(&hints, 0, sizeof(hints));
+   hints.ai_socktype = SOCK_STREAM;
+   hints.ai_family = AF_INET;
+
+   if ((err = getaddrinfo(Computername.getValue(), NULL, &hints, &ifa)) != 0) {
+      return List;
+   }
+
+   for (; ifa != NULL; ifa = ifa->ai_next) {
+      if (ifa->ai_addr == NULL)
+         continue;
+
+      Jumpropes::NetInterface netif;
+      netif.Name = "";// ifa->ai_canonname;
+
+      SetAndResolveIP(&netif.IP, ifa->ai_addr);
+
+      List.push_back(netif);
+   }
+
+   freeaddrinfo(ifa);
+
+   return List;
 }

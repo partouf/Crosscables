@@ -23,7 +23,14 @@
    #include <sys/select.h>
 
    #include <cstring>
+
+   #include <sys/socket.h>
+   #include <ifaddrs.h>
+
+   #include <linux/if_link.h>
 #endif
+
+#include <vector>
 
 
 namespace Jumpropes {
@@ -44,6 +51,17 @@ namespace Jumpropes {
    //bool JRisIPv4address( const String *sIp );
    //bool JRisIPv6address( const String *sIp );
 
+   bool TryToGetComputerName(String *PComputername);
+
+   bool SetAndResolveIP(IPAddress *IP, const sockaddr *address);
+
+   struct NetInterface
+   {
+      std::string Name;
+      Jumpropes::IPAddress IP;
+   };
+
+   std::vector<NetInterface> ListNetworkInterfaces();
 }
 
 #ifdef GF_OS_WIN32

@@ -126,6 +126,8 @@ bool bytewisematch( const char *s1, const char *s2, unsigned int iLen ) {
 //------------------------------------------------------------------------------
 // Constructors/destructor
 //------------------------------------------------------------------------------
+
+
 Groundfloor::String::String() : Groundfloor::Freeable() {
    this->value = NULL;
    this->strlength = 0;
@@ -164,6 +166,15 @@ Groundfloor::String::String( const wchar_t *sValue ) : Groundfloor::Freeable() {
    this->size = 0;
 
    setValue( reinterpret_cast<const char *>( sValue ), wcslen(sValue) * sizeof(wchar_t) );
+}
+
+Groundfloor::String::String(const String & obj) : Groundfloor::Freeable()
+{
+   this->value = NULL;
+   this->strlength = 0;
+   this->size = 0;
+
+   setValue(obj.value, obj.strlength);
 }
 
 Groundfloor::String::~String() {
@@ -738,6 +749,11 @@ void Groundfloor::String::ltrim_ansi() {
 
       this->setValue( &this->value[i], this->strlength - i );
    }
+}
+
+void Groundfloor::String::trimzero_ansi()
+{
+   this->setLength(strlen(this->value));
 }
 
 

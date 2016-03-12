@@ -40,6 +40,9 @@ namespace Groundfloor {
 		String(const char *sValue);       // ANSI
 		String(const wchar_t *sValue);    // Wide (Windows UTF-16 / Linux UTF-32)
 
+		// copy constructor
+		String(const String &obj);
+
 		~String();
 
 		//---------------------------------------------------------------------------
@@ -138,6 +141,8 @@ namespace Groundfloor {
 		void rtrim_ansi(bool bOnlyRemoveCrlf = false);
 		/// left trim (\\r, \\n, \\t and ' ')
 		void ltrim_ansi();
+
+		void trimzero_ansi();
 
 		bool match_ansi(const char *sNeedle) const;
 		bool match_wide(const wchar_t *sNeedle) const;

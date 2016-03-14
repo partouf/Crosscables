@@ -35,6 +35,7 @@ namespace Groundfloor {
 		/// Initializes the string to sValue of given length.
 		String(const char *sValue, unsigned int iLength);
 		String(const String *sValue);
+		String(const std::string sValue);
 
 		/// Initializes the string to sValue using strlen() for length (\\0 terminated)
 		String(const char *sValue);       // ANSI
@@ -88,6 +89,8 @@ namespace Groundfloor {
 
 		/// Copies the given String into itself, freeing the old string data.
 		bool setValue(const String *sValue);
+
+		bool setValue(const std::string sValue);
 
 		/// Replace substring a with substring b
 		bool replace(const String *sSubStringA, const String *sSubStringB);
@@ -182,6 +185,7 @@ namespace Groundfloor {
 		/// operators
 		String& operator=(const char* s);
 		String& operator=(const wchar_t* s);
+		String& operator=(const std::string s);
 
 		String& operator<<(const String *s);
 		String& operator<<(const char *s);

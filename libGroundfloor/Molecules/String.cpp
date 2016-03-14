@@ -152,6 +152,15 @@ Groundfloor::String::String( const Groundfloor::String *sValue ) : Groundfloor::
    setValue( sValue->value, sValue->strlength );
 }
 
+Groundfloor::String::String(const std::string sValue)
+{
+   this->value = NULL;
+   this->strlength = 0;
+   this->size = 0;
+
+   this->setValue(sValue);
+}
+
 Groundfloor::String::String( const char *sValue ) : Groundfloor::Freeable() {
    this->value = NULL;
    this->strlength = 0;
@@ -397,6 +406,11 @@ bool Groundfloor::String::setValue( const char *sValue, unsigned int iLength ) {
 
 bool Groundfloor::String::setValue( const Groundfloor::String *sValue ) {
    return setValue( sValue->value, sValue->strlength );
+}
+
+bool Groundfloor::String::setValue(const std::string sValue)
+{
+   return setValue(sValue.c_str(), sValue.length());
 }
 
 bool Groundfloor::String::setValue_ansi( const char *sValue ) {
@@ -926,6 +940,12 @@ Groundfloor::String& Groundfloor::String::operator=(const char* s) {
 
 Groundfloor::String& Groundfloor::String::operator=(const wchar_t* s) {
    this->setValue_wide( s );
+   return *this;
+}
+
+Groundfloor::String & Groundfloor::String::operator=(const std::string s)
+{
+   this->setValue(s);
    return *this;
 }
 

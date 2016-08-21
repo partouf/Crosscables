@@ -43,6 +43,7 @@ namespace Jumpropes {
      *  to the result of the hostname loookup "nonvalid.domain.name.nonvalid".
      * This is added to make OS differences smaller and to even return false
      *  when a DNS provider like OpenDNS is used.
+     * Note: sSrcHostname can be an IP Address as well!
      **/
    bool JRresolveIP(const String *sSrcHostname, LookupObject *aDestIP, bool bSpecialCheck = false);
 

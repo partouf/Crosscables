@@ -73,7 +73,8 @@ namespace Groundfloor {
 		//---------------------------------------------------------------------------
 
 		bool match(const String *sNeedle) const;
-		bool startsWith(const String *sNeedle) const;
+      bool match(const std::string sValue) const;
+      bool startsWith(const String *sNeedle) const;
 		bool endsWith(const String *sNeedle) const;
 
 		int pos(unsigned int iStart, const String *sNeedle) const;

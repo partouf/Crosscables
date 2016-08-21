@@ -220,6 +220,11 @@ bool Groundfloor::String::match( const Groundfloor::String *sNeedle ) const {
    return false;
 }
 
+bool Groundfloor::String::match(const std::string sValue) const
+{
+   return match(sValue.c_str(), sValue.size());
+}
+
 bool Groundfloor::String::match_ansi( const char *sNeedle ) const {
 /*
    unsigned int c = max( strlen(sNeedle), this->strlength );

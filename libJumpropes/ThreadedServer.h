@@ -22,8 +22,8 @@ namespace Jumpropes {
       ThreadedServer(ServerSocket *aSocket);
       ~ThreadedServer();
 
-      void startListening(int iPort, int iMax);
-      void startListening(int iPort);
+      bool startListening(int iPort, int iMax);
+      bool startListening(int iPort);
 
       ServerSocket *getServerSocket() { return socket; };
 

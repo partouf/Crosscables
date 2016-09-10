@@ -15,6 +15,8 @@ Jumpropes::BaseSocket::BaseSocket( int iSocketId, const BaseSocket *aServer ) : 
 	if ( this->iSocketId != -1 ) {
 		loadLocalAddressInfo();
 		loadRemoteAddressInfo();
+
+      bConnected = true;
 	}
 }
 

@@ -19,17 +19,19 @@ Jumpropes::ThreadedServer::~ThreadedServer() {
     }
 }
 
-void Jumpropes::ThreadedServer::startListening( int iPort, int iMax ) {
+bool Jumpropes::ThreadedServer::startListening( int iPort, int iMax ) {
    socket->localPort.set( iPort );
    socket->maxconnections.set( iMax );
    
-   socket->connect();
+   bool listening = socket->connect();
 
    start();
+
+   return listening;
 }
 
-void Jumpropes::ThreadedServer::startListening( int iPort ) {
-   startListening( iPort, 2114125311 );
+bool Jumpropes::ThreadedServer::startListening( int iPort ) {
+   return startListening( iPort, 2114125311 );
 }
 
 void Jumpropes::ThreadedServer::execute() {

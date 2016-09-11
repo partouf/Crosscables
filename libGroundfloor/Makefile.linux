@@ -4,7 +4,7 @@
 LINKOBJ  = Atoms/Freeable.o Atoms/Callable.o Atoms/Lockable.o Atoms/Initialize.o Atoms/MemFuncs.o Molecules/String.o Molecules/Vector.o Materials/Functions.o Materials/Thread.o Materials/FifoVector.o Materials/CallbackThread.o Materials/Logger.o Materials/ThreadedBuffer.o Materials/Directory.o Materials/GarbageCollector.o Materials/FileWriter.o Materials/CsvSettings.o Molecules/Callbacks.o Molecules/Property.o Bookshelfs/BFields.o Bookshelfs/BField.o Bookshelfs/BValue.o Bookshelfs/BRecords.o Bookshelfs/BRecord.o Bookshelfs/BTable.o Bookshelfs/BFunctions.o Bookshelfs/BAttribute.o Bookshelfs/BNode.o Bookshelfs/RemoteSquirrel.o Molecules/StringVector.o Molecules/BaseCommunicator.o Materials/FileCommunicator.o Materials/StringLookup.o
 BIN  = libGroundfloor.a
 RM = rm -f
-CXXFLAGS = 
+CXXFLAGS = -fexceptions -g
 
 .PHONY: all clean
 

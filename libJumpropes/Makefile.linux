@@ -6,7 +6,7 @@ LINKOBJ = BaseSocket.o ClientSocket.o ServerSocket.o ThreadedConnection.o Thread
 LIBS = -nostdlib
 CXXINCS = -I"../include/"
 BIN  = libJumpropes.a
-CXXFLAGS = $(CXXINCS) -ansi -fexceptions -nostdlib
+CXXFLAGS = $(CXXINCS) -g -ansi -fexceptions -nostdlib
 RM = rm -f
 
 .PHONY: all all-before all-after clean clean-custom

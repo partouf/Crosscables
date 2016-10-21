@@ -144,6 +144,14 @@ Groundfloor::String::String( const char *sValue, unsigned int iLength ) : Ground
    setValue( sValue, iLength );
 }
 
+Groundfloor::String::String(const unsigned char *sValue, unsigned int iLength) : Groundfloor::Freeable() {
+   this->value = NULL;
+   this->strlength = 0;
+   this->size = 0;
+
+   setValue(sValue, iLength);
+}
+
 Groundfloor::String::String( const Groundfloor::String *sValue ) : Groundfloor::Freeable() {
    this->value = NULL;
    this->strlength = 0;
@@ -407,6 +415,11 @@ bool Groundfloor::String::setValue( const char *sValue, unsigned int iLength ) {
    }
 
    return true;
+}
+
+bool Groundfloor::String::setValue(const unsigned char * sValue, unsigned int iLength)
+{
+   return setValue(reinterpret_cast<const char *>(sValue), iLength);
 }
 
 bool Groundfloor::String::setValue( const Groundfloor::String *sValue ) {

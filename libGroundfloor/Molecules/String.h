@@ -34,6 +34,7 @@ namespace Groundfloor {
 		String();
 		/// Initializes the string to sValue of given length.
 		String(const char *sValue, unsigned int iLength);
+		String(const unsigned char *sValue, unsigned int iLength);
 		String(const String *sValue);
 		String(const std::string sValue);
 
@@ -51,6 +52,8 @@ namespace Groundfloor {
 
 		/// Copies the given binary string into itself, freeing the old string data.
 		bool setValue(const char *sValue, unsigned int iLength);
+		bool setValue(const unsigned char *sValue, unsigned int iLength);
+
 		/// Appends the given binary string to the current string, adjusts the length and resizes memory space if necessary.
 		bool append(const char *sValue, unsigned int iLength);
 		/// Prepends the given binary string to the current string, adjusts the length and always remaps the string data.
@@ -73,8 +76,8 @@ namespace Groundfloor {
 		//---------------------------------------------------------------------------
 
 		bool match(const String *sNeedle) const;
-      bool match(const std::string sValue) const;
-      bool startsWith(const String *sNeedle) const;
+		bool match(const std::string sValue) const;
+		bool startsWith(const String *sNeedle) const;
 		bool endsWith(const String *sNeedle) const;
 
 		int pos(unsigned int iStart, const String *sNeedle) const;

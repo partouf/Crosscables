@@ -56,6 +56,25 @@ Groundfloor::Vector::Vector( unsigned int iPreAlloc ) : Freeable() {
    this->ptrsize = sizeof( void * );
 }
 
+Groundfloor::Vector::Vector(const Vector & AnotherVector) : Freeable() {
+	this->iPreAllocateCount = AnotherVector.iPreAllocateCount;
+
+	this->paVector = NULL;
+	this->iAllocated = 0;
+
+	this->iElementCount = AnotherVector.iElementCount;
+
+	this->autoClear = AnotherVector.autoClear;
+	this->forceInsert = AnotherVector.forceInsert;
+
+	this->iRemovedCount = AnotherVector.iRemovedCount;
+
+	this->ptrsize = sizeof(void *);
+
+	this->resizeVector(AnotherVector.iAllocated);
+	memcpy(this->paVector, AnotherVector.paVector, this->iAllocated);
+}
+
 void Groundfloor::Vector::setPreAlloc(unsigned int iPreAlloc) {
    this->iPreAllocateCount = iPreAlloc;
 }

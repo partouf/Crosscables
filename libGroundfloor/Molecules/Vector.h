@@ -45,6 +45,10 @@ namespace Groundfloor {
 		* This is intended as a speedup feature, use 1 to be more memory efficient.
 		*/
 	   Vector( unsigned int iPreAlloc );
+
+	   /// Copy constructor
+	   Vector(const Vector &AnotherVector);
+
 	   /// Destructor, frees memory and optionally deletes all containing objects.
 	   ~Vector();
 

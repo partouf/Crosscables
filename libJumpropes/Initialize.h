@@ -9,6 +9,8 @@ namespace Jumpropes {
    bool initJumpropes();
    void finiJumpropes();
 
+   bool isJumpropesInitialized();
+
 }
 
 #endif // __JRINITIALIZE_H

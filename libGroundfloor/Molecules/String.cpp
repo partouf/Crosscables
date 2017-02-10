@@ -474,6 +474,11 @@ bool Groundfloor::String::append( const Groundfloor::String *sValue, unsigned in
    return append( sValue->value, iLength );
 }
 
+bool Groundfloor::String::append(const std::string sValue)
+{
+   return append(sValue.c_str(), sValue.length());
+}
+
 bool Groundfloor::String::append_ansi( const char *sValue ) {
    return append( sValue, strlen( sValue ) );
 }

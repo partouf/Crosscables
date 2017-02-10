@@ -88,6 +88,8 @@ namespace Groundfloor {
 		/// Appends the given String of given length to the current string, adjusts the length and resizes memory space if necessary.
 		bool append(const String *sValue, unsigned int iLength);
 
+        bool append(const std::string sValue);
+
 		/// Appends the given char/byte to the current string, adjusts the length and resizes memory space if necessary.
 		bool append(char aChar);
 

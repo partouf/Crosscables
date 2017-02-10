@@ -2,17 +2,14 @@
 Groundfloor
 -----------
 
-
-Project is afhankelijk van basis C++ libraries.
-Voor Threads in Linux is -lpthread nodig, en optioneel -lrt.
+Using Threads on Linux requires -lpthread, and optionally -lrt for higher resolution timing.
 
 BUILD
 -----
 sh build.sh
 
 
-Linking problemen
------------------
+Linking
+-------
 
-Indien een andere static library naar Groundfloor verwijst moet
--lGroundfloor aan het eind van de linking compile regel staan.
+When used in conjunction with the other Crosscables libraries, -lGroundfloor usually needs to sit at the end of the Makefile linking options to make sure the compiler doesn't optimize out things that are used in the other needed libraries.

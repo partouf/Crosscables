@@ -10,6 +10,7 @@ namespace JumpropesCommon {
 #include <Groundfloor/Molecules/Callbacks.h>
 #include <Groundfloor/Molecules/Property.h>
 #include <Groundfloor/Materials/FileWriter.h>
+#include <Groundfloor/Materials/StringLookup.h>
 #include "HttpConnection.h"
 #include "../ClientSocket.h"
 
@@ -34,7 +35,7 @@ namespace JumpropesCommon {
       HttpHeader();
       ~HttpHeader();
 
-      void parse(String *sHeader);
+      void parse(const String *sHeader);
 
       double httpversion;
       int httpstatus;
@@ -47,6 +48,7 @@ namespace JumpropesCommon {
       unsigned long contentlength;
 
       StringVector cookies;
+	  SimpleStringLookup allvars;
 
       bool chunked;
    };

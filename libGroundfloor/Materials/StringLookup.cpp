@@ -67,6 +67,24 @@ void Groundfloor::SimpleStringLookup::insertObjectSortedByLength(const Groundflo
    }
 }
 
+void Groundfloor::SimpleStringLookup::deleteAndClear()
+{
+	unsigned long i, c;
+	Groundfloor::SimpleStringLookupObject *obj;
+
+	c = this->iElementCount;
+	for (i = 0; i < c; i++) {
+		obj = static_cast<Groundfloor::SimpleStringLookupObject *>(paVector[i]);
+		if (obj != NULL) {
+			paVector[i] = NULL;
+
+			delete obj;
+		}
+	}
+
+	clear();
+}
+
 void Groundfloor::SimpleStringLookup::insertObjectSortedByLength(const char *sName, Groundfloor::Freeable *anObject, bool bAscending) {
    unsigned long i, c;
    Groundfloor::SimpleStringLookupObject *obj;
@@ -102,7 +120,7 @@ void Groundfloor::SimpleStringLookup::insertObjectSortedByLength(const char *sNa
 }
 
 
-Groundfloor::Freeable *Groundfloor::SimpleStringLookup::getObjectByString(const Groundfloor::String *sName) {
+Groundfloor::Freeable *Groundfloor::SimpleStringLookup::getObjectByString(const Groundfloor::String *sName, bool bCaseSensitive) {
    unsigned long i, c;
    Groundfloor::SimpleStringLookupObject *obj;
 
@@ -110,20 +128,28 @@ Groundfloor::Freeable *Groundfloor::SimpleStringLookup::getObjectByString(const 
    for (i = 0; i < c; i++) {
       obj = static_cast<Groundfloor::SimpleStringLookupObject *>(paVector[i]);
       if (obj != NULL) {
-         if (sName->match(&(obj->name))) {
-            return obj->object;
+         if (bCaseSensitive) {
+             if (sName->match(&(obj->name))) {
+                 return obj->object;
+             }
          }
+         else {
+			 if ((obj->name.getLength() == sName->getLength()) && obj->name.startsWith(sName)) {
+                 return obj->object;
+			 }
+         }
+         
       }
    }
 
    return NULL;
 }
 
-Groundfloor::Freeable *Groundfloor::SimpleStringLookup::getObjectByString(const char *sName) {
+Groundfloor::Freeable *Groundfloor::SimpleStringLookup::getObjectByString(const char *sName, bool bCaseSensitive) {
    Groundfloor::String tmp;
    tmp.setValue_ansi(sName);
 
-   return getObjectByString(&tmp);
+   return getObjectByString(&tmp, bCaseSensitive);
 }
 
 void Groundfloor::SimpleStringLookup::removeObjectByString(const char *sName) {

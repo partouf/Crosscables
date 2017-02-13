@@ -71,6 +71,7 @@ JumpropesCommon::HttpHeader::HttpHeader() : Freeable() {
 }
 
 JumpropesCommon::HttpHeader::~HttpHeader() {
+	resetVars();
 }
 
 void JumpropesCommon::HttpHeader::resetVars() {
@@ -83,10 +84,11 @@ void JumpropesCommon::HttpHeader::resetVars() {
    location.setValue( "", 0 );
    contenttype.setValue( "", 0 );
    connection.setValue( "", 0 );
+   allvars.deleteAndClear();
 }
 
 // TODO: rewrite met split()
-void JumpropesCommon::HttpHeader::parse( String *sHeader ) {
+void JumpropesCommon::HttpHeader::parse( const String *sHeader ) {
    int iPosStart;
    int iPosEnd;
    int iValStart;
@@ -230,6 +232,29 @@ void JumpropesCommon::HttpHeader::parse( String *sHeader ) {
          cookie->setValue( &tmp );
          cookies.addElement( cookie );
       }
+   }
+
+   Vector completeList;
+   Groundfloor::split_p(&completeList, sHeader, crlf);
+   size_t c = completeList.size();
+   for (size_t i = 0; i < c; ++i)
+   {
+	   String *keyvalue = static_cast<String *>(completeList.elementAt(i));
+	   int colonpos = keyvalue->pos_ansi(":");
+	   if (colonpos != -1) {
+		   String key, value;
+
+		   key.setValue(keyvalue->getValue(), colonpos);
+		   key.rtrim_ansi();
+
+		   value.setValue(keyvalue->getPointer(colonpos + 1));
+		   value.ltrim_ansi();
+
+		   BValue *val = new BValue();
+		   val->setString(&value);
+
+		   allvars.addObjectByString(key.getValue(), val);
+	   }
    }
 }
 

@@ -207,7 +207,7 @@ void StrToAscii85(Groundfloor::String *sInput, Groundfloor::String *sOutput) {
 
 
 void CharsToBase64(char sInput[], Groundfloor::String *sOutput) {
-   char a, b, c, d;
+   unsigned char a, b, c, d;
 
    a = (sInput[0] & 0xFC);
    a >>= 2;

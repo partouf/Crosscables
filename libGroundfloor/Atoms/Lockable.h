@@ -37,7 +37,7 @@ namespace Groundfloor {
 		pthread_mutex_t hndMutex;
 		pthread_mutexattr_t pAttr;
 
-#ifndef CLOCK_REALTIME
+#if !defined(CLOCK_REALTIME) || defined(GF_OS_MAC)
 		int iFunctionTime;
 #endif
 #endif

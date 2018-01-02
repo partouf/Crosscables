@@ -142,7 +142,7 @@ bool Groundfloor::Lockable::lockWhenAvailable( int iTimeout ) {
 
       struct timespec lockTimeout;
 
-      #if defined(CLOCK_REALTIME)
+      #if defined(CLOCK_REALTIME) && !defined(GF_OS_MAC)
          clock_gettime( CLOCK_REALTIME, &lockTimeout );
 
          long iSec      = (iTimeout / 1000);

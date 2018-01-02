@@ -657,7 +657,7 @@ bool Groundfloor::String::setSize_old( unsigned int iSize ) {
    if ( iSize <= 0x3FFFFFFF ) {
       char *newstr = static_cast<char *>(GFMalloc( iSize + 4 ));
 
-      if ( newstr > 0 ) {
+      if ( newstr != NULL ) {
          char *oldvalue = this->value;
 
          if ( oldvalue != NULL ) {
@@ -831,7 +831,7 @@ bool Groundfloor::String::transformToWidestring( bool bCurrentIsUtf8, bool bFake
    unsigned int iNewLen = this->strlength * sizeof(wchar_t);
    char *newstr = static_cast<char *>(GFMalloc( iNewLen + 4 ));
 
-   if ( newstr > 0 ) {
+   if ( newstr != NULL ) {
       char *oldvalue = this->value;
 
       if ( oldvalue != NULL ) {
@@ -893,7 +893,7 @@ bool Groundfloor::String::transformWidestringToString( bool bForceToUtf8, bool b
    unsigned int iNewLen = this->strlength;
    char *newstr = static_cast<char *>(GFMalloc( iNewLen + 4 ));
 
-   if ( newstr > 0 ) {
+   if ( newstr != NULL ) {
       char *oldvalue = this->value;
 
       if ( oldvalue != NULL ) {

@@ -27,7 +27,9 @@
    #include <sys/socket.h>
    #include <ifaddrs.h>
 
-   #include <linux/if_link.h>
+  #if !defined(GF_OS_MAC)
+    #include <linux/if_link.h>
+  #endif
 #endif
 
 #include <vector>

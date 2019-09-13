@@ -9,6 +9,8 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: installthings
+      run: apt install mysql-headers
     - name: Groundfloor
       run: cd libGroundfloor && sh build.sh
     - name: Jumpropes

@@ -11,11 +11,11 @@ jobs:
     - uses: actions/checkout@v1
     - name: Groundfloor
       run: cd libGroundfloor && sh build.sh
-    - name: Chalkboard
-      run: cd ../libChalkboard && sh build.sh
     - name: Jumpropes
-      run: cd ../libJumpropes && sh build.sh
+      run: cd libJumpropes && sh build.sh
     - name: Jumpknots
-      run: cd ../libJumpknots && sh build.sh
+      run: cd libJumpknots && sh build.sh
     - name: MySQL
-      run: cd ../libMySQLBooks && sh build.sh
+      run: cd libMySQLBooks && sh build.sh
+    - name: Chalkboard
+      run: cd libChalkboard && sh build.sh

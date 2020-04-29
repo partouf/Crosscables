@@ -15,7 +15,18 @@ jobs:
       run: mkdir -p build && cd build && cmake .. && make Jumpropes
     - name: Jumpknots
       run: mkdir -p build && cd build && cmake .. && make Jumpknots
-    - name: Upload a Build Artifact
+    - name: Artifact Groundfloor
       uses: actions/upload-artifact@v2
       with:
+        name: Groundfloor
         path: "build/libGroundfloor/*.a"
+    - name: Artifact Jumpropes
+      uses: actions/upload-artifact@v2
+      with:
+        name: Jumpropes
+        path: "build/libJumpropes/*.a"
+    - name: Artifact Jumpknots
+      uses: actions/upload-artifact@v2
+      with:
+        name: Jumpknots
+        path: "build/libJumpknots/*.a"

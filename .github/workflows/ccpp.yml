@@ -15,5 +15,7 @@ jobs:
       run: mkdir -p build && cd build && cmake .. && make Jumpropes
     - name: Jumpknots
       run: mkdir -p build && cd build && cmake .. && make Jumpknots
-    - name: MySQL
-      run: mkdir -p build && cd build && cmake .. && make MySQLBooks
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        path: "*.a"

@@ -9,15 +9,11 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: installthings
-      run: apt install mysql-headers
     - name: Groundfloor
-      run: cd libGroundfloor && sh build.sh
+      run: mkdir build ** cd build && cmake .. && make Groundfloor
     - name: Jumpropes
-      run: cd libJumpropes && sh build.sh
+      run: mkdir build ** cd build && cmake .. && make Jumpropes
     - name: Jumpknots
-      run: cd libJumpknots && sh build.sh
+      run: mkdir build ** cd build && cmake .. && make Jumpknots
     - name: MySQL
-      run: cd libMySQLBooks && sh build.sh
-    - name: Chalkboard
-      run: cd libChalkboard && sh build.sh
+      run: mkdir build ** cd build && cmake .. && make MySQLBooks

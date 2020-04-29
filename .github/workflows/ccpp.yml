@@ -10,10 +10,10 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Groundfloor
-      run: mkdir build ** cd build && cmake .. && make Groundfloor
+      run: mkdir -p build && cd build && cmake .. && make Groundfloor
     - name: Jumpropes
-      run: mkdir build ** cd build && cmake .. && make Jumpropes
+      run: mkdir -p build && cd build && cmake .. && make Jumpropes
     - name: Jumpknots
-      run: mkdir build ** cd build && cmake .. && make Jumpknots
+      run: mkdir -p build && cd build && cmake .. && make Jumpknots
     - name: MySQL
-      run: mkdir build ** cd build && cmake .. && make MySQLBooks
+      run: mkdir -p build && cd build && cmake .. && make MySQLBooks

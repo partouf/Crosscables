@@ -1,5 +1,0 @@
-os:
-  - linux
-language: cpp
-compiler: clang
-script: cd libGroundfloor && sh build.sh && cd ../libChalkboard && sh build.sh && cd ../libJumpropes && sh build.sh && cd ../libJumpknots && sh build.sh && cd ../libMySQLBooks && sh build.sh

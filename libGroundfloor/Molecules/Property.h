@@ -19,7 +19,7 @@ namespace Groundfloor {
 		T anObject;
 	public:
 		/// initializes internal object to 0
-		BasicProperty() : Freeable() {
+		BasicProperty() : Freeable::Freeable() {
 			this->anObject = 0;
 		}
 		~BasicProperty() {

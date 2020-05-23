@@ -16,7 +16,7 @@ namespace Groundfloor {
 	protected:
 		P aDefaultParam;
 	public:
-		NotifyAbstract() : Callable() {
+		NotifyAbstract() : Callable::Callable() {
 			aDefaultParam = 0;
 		}
 		~NotifyAbstract() {
@@ -33,7 +33,7 @@ namespace Groundfloor {
 	class RetreiveAbstract : public Freeable
 	{
 	public:
-		RetreiveAbstract() : Freeable() {
+		RetreiveAbstract() : Freeable::Freeable() {
 		}
 		~RetreiveAbstract() {
 		}
@@ -49,12 +49,12 @@ namespace Groundfloor {
 	protected:
 		Groundfloor::Vector *aNotifyList;
 	public:
-		MultiNotify() : NotifyAbstract() {
+		MultiNotify() : NotifyAbstract<P>::NotifyAbstract() {
 			aNotifyList = new Vector();
 			aNotifyList->autoClear = true;
 		}
 
-		MultiNotify(MultiNotify<P> *pNotify) : NotifyAbstract() {
+		MultiNotify(MultiNotify<P> *pNotify) : NotifyAbstract<P>::NotifyAbstract() {
 			aNotifyList = new Vector();
 			pNotify->aNotifyList->fastCopy(aNotifyList);
 			aNotifyList->autoClear = false;
@@ -121,7 +121,7 @@ namespace Groundfloor {
 		FuncCallbackOneParam pFunction;
 
 	public:
-		NotifyFunctionPointer(T *pObject, FuncCallbackOneParam pFunction) :NotifyAbstract() {
+		NotifyFunctionPointer(T *pObject, FuncCallbackOneParam pFunction) : NotifyAbstract<P>::NotifyAbstract() {
 			this->pObject = pObject;
 			this->pFunction = pFunction;
 		};
@@ -148,7 +148,7 @@ namespace Groundfloor {
 		FuncCallbackNoParam pFunction;
 
 	public:
-		RetreiveFunctionPointer(T *pObject, FuncCallbackNoParam pFunction) : RetreiveAbstract() {
+		RetreiveFunctionPointer(T *pObject, FuncCallbackNoParam pFunction) : RetreiveAbstract<P>::RetreiveAbstract() {
 			this->pObject = pObject;
 			this->pFunction = pFunction;
 		};

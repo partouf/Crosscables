@@ -17,7 +17,8 @@ namespace Groundfloor {
 		P aDefaultParam;
 	public:
 		NotifyAbstract() : Callable::Callable() {
-			aDefaultParam = 0;
+		}
+		NotifyAbstract(P defaultParam) : Callable::Callable(), aDefaultParam(defaultParam) {
 		}
 		~NotifyAbstract() {
 		}
@@ -54,23 +55,18 @@ namespace Groundfloor {
 			aNotifyList->autoClear = true;
 		}
 
-		MultiNotify(MultiNotify<P> *pNotify) : NotifyAbstract<P>::NotifyAbstract() {
+		MultiNotify(MultiNotify<P> *pNotify) : NotifyAbstract<P>::NotifyAbstract(pNotify->aDefaultParam) {
 			aNotifyList = new Vector();
 			pNotify->aNotifyList->fastCopy(aNotifyList);
 			aNotifyList->autoClear = false;
-			aDefaultParam = pNotify->aDefaultParam;
 		}
 
 		~MultiNotify() {
 			delete aNotifyList;
 		}
 
-		void setDefaultParam(P aParam) {
-			aDefaultParam = aParam;
-		}
-
 		void execute() {
-			execute(aDefaultParam);
+			execute(this->aDefaultParam);
 		}
 
 		void execute(P aParam) {

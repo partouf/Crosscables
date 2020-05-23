@@ -10,10 +10,6 @@
 
 namespace Groundfloor {
 
-	// template implementaties moeten helaas in de header file, omdat iedere
-	//  keer bij een nieuw type bij [new NotifyFunction<type>()] een nieuwe implementatie
-	//  moet worden aangemaakt en worden gecompileerd in de uiteindelijke binary.
-
 	template <class P>
 	class NotifyAbstract : public Callable
 	{
@@ -53,13 +49,12 @@ namespace Groundfloor {
 	protected:
 		Groundfloor::Vector *aNotifyList;
 	public:
-		MultiNotify() : NotifyAbstract<P>::NotifyAbstract() {
+		MultiNotify() : NotifyAbstract() {
 			aNotifyList = new Vector();
 			aNotifyList->autoClear = true;
-			aDefaultParam = 0;
 		}
 
-		MultiNotify(MultiNotify<P> *pNotify) : NotifyAbstract<P>::NotifyAbstract() {
+		MultiNotify(MultiNotify<P> *pNotify) : NotifyAbstract() {
 			aNotifyList = new Vector();
 			pNotify->aNotifyList->fastCopy(aNotifyList);
 			aNotifyList->autoClear = false;
@@ -126,7 +121,7 @@ namespace Groundfloor {
 		FuncCallbackOneParam pFunction;
 
 	public:
-		NotifyFunctionPointer(T *pObject, FuncCallbackOneParam pFunction) : NotifyAbstract<P>::NotifyAbstract() {
+		NotifyFunctionPointer(T *pObject, FuncCallbackOneParam pFunction) :NotifyAbstract() {
 			this->pObject = pObject;
 			this->pFunction = pFunction;
 		};
@@ -153,7 +148,7 @@ namespace Groundfloor {
 		FuncCallbackNoParam pFunction;
 
 	public:
-		RetreiveFunctionPointer(T *pObject, FuncCallbackNoParam pFunction) : RetreiveAbstract<P>::RetreiveAbstract() {
+		RetreiveFunctionPointer(T *pObject, FuncCallbackNoParam pFunction) : RetreiveAbstract() {
 			this->pObject = pObject;
 			this->pFunction = pFunction;
 		};

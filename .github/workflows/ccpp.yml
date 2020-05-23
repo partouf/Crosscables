@@ -1,0 +1,32 @@
+name: C/C++ CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+    - name: Groundfloor
+      run: mkdir -p build && cd build && cmake .. && make Groundfloor
+    - name: Jumpropes
+      run: mkdir -p build && cd build && cmake .. && make Jumpropes
+    - name: Jumpknots
+      run: mkdir -p build && cd build && cmake .. && make Jumpknots
+    - name: Artifact Groundfloor
+      uses: actions/upload-artifact@v2
+      with:
+        name: Groundfloor
+        path: "build/libGroundfloor/*.a"
+    - name: Artifact Jumpropes
+      uses: actions/upload-artifact@v2
+      with:
+        name: Jumpropes
+        path: "build/libJumpropes/*.a"
+    - name: Artifact Jumpknots
+      uses: actions/upload-artifact@v2
+      with:
+        name: Jumpknots
+        path: "build/libJumpknots/*.a"

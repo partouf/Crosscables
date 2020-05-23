@@ -20,10 +20,11 @@ Included, but not yet uploaded:
  * libPostgreSQLBooks - PostgreSQL, Not yet uploaded
 
 Supported/tested platforms:
- * Win32 (compiler VS2015)
- * Linux [![Build Status](https://travis-ci.org/partouf/Crosscables.svg?branch=master)](https://travis-ci.org/partouf/Crosscables)
+ * Win32 (compiler VS2015-2019)
+ * MacOSX Clang
+ * Linux [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fpartouf%2FCrosscables%2Fbadge&style=flat)](https://actions-badge.atrox.dev/partouf/Crosscables/goto)
  
-Supported/tested, but Makefiles not yet fixed before uploading to GitHub:
+Supported/tested:
  * MacOSX (only libGroundfloor and libJumpropes will build)
  * FreeBSD
  * Solaris (no GUI)

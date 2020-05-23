@@ -9,7 +9,7 @@
 #include <cstring>
 #endif
 
-Groundfloor::Directory::Directory() {
+Groundfloor::Directory::Directory() : Freeable() {
    bOpen = false;
 
    #ifdef GF_OS_WIN32

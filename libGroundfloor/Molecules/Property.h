@@ -182,7 +182,7 @@ namespace Groundfloor {
 
 
 
-	template <class T>Property<T>::Property() {
+	template <class T>Property<T>::Property() : BasicProperty<T>() {
 		this->aNotify = 0;
 		this->aRetreive = 0;
 	}

@@ -52,8 +52,6 @@ namespace Groundfloor {
 	{
 	protected:
 		Groundfloor::Vector *aNotifyList;
-
-		P aDefaultParam;
 	public:
 		MultiNotify() : NotifyAbstract<P>::NotifyAbstract() {
 			aNotifyList = new Vector();

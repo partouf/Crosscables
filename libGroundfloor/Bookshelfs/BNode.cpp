@@ -72,6 +72,7 @@ void Groundfloor::BNodePath::readFromString( const char *sPath ) {
 Groundfloor::BNode::BNode(unsigned int iChildrenPreAlloc) : Groundfloor::Freeable() {
    arrAttributes = NULL;
    arrChildren = NULL;
+   parent = NULL;
 
    this->iChildrenPreAlloc = iChildrenPreAlloc;
    this->iAttribPreAlloc = 3;

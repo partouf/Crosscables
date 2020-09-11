@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mkdir ../include/MySQLBooks
+mkdir -p ../include/MySQLBooks
 
 cp *.h ../include/MySQLBooks
 

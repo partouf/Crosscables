@@ -5,8 +5,8 @@
 #include "../Atoms/Callable.h"
 #include "Vector.h"
 
-#define GFCreateNotify(a,b,c,d)    new NotifyFunctionPointer<a,b>( c, d )
-#define GFCreateRetreive(a,b,c,d)  new RetreiveFunctionPointer<a,b>( c, d )
+#define GFCreateNotify(a,b,c,d)    new Groundfloor::NotifyFunctionPointer<a,b>( c, d )
+#define GFCreateRetreive(a,b,c,d)  new Groundfloor::RetreiveFunctionPointer<a,b>( c, d )
 
 namespace Groundfloor {
 

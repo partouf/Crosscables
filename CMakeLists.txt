@@ -8,7 +8,7 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_subdirectory(Groundfloor)
 add_subdirectory(Jumpropes)
-add_subdirectory(Jumpknots)
+#add_subdirectory(Jumpknots)
 
 # add_subdirectory(MySQLBooks)
 

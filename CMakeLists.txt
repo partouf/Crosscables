@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.10)
 project(Crosscables
     LANGUAGES CXX)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 add_subdirectory(Groundfloor)
 add_subdirectory(Jumpropes)
 add_subdirectory(Jumpknots)

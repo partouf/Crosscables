@@ -7,8 +7,8 @@ project(Crosscables
 add_subdirectory(libGroundfloor)
 add_subdirectory(libJumpropes)
 
-add_subdirectory(libJumpknots)
-add_subdirectory(libMySQLBooks)
+#add_subdirectory(libJumpknots)
+#add_subdirectory(libMySQLBooks)
 
 add_custom_target(
     devmake ALL

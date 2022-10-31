@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Atoms\Callable.cpp" />
+    <ClCompile Include="Atoms\Freeable.cpp" />
+    <ClCompile Include="Atoms\Initialize.cpp" />
+    <ClCompile Include="Atoms\Lockable.cpp" />
+    <ClCompile Include="Atoms\MemFuncs.cpp" />
+    <ClCompile Include="Bookshelfs\BAttribute.cpp" />
+    <ClCompile Include="Bookshelfs\BField.cpp" />
+    <ClCompile Include="Bookshelfs\BFields.cpp" />
+    <ClCompile Include="Bookshelfs\BFunctions.cpp" />
+    <ClCompile Include="Bookshelfs\BNode.cpp" />
+    <ClCompile Include="Bookshelfs\BRecord.cpp" />
+    <ClCompile Include="Bookshelfs\BRecords.cpp" />
+    <ClCompile Include="Bookshelfs\BTable.cpp" />
+    <ClCompile Include="Bookshelfs\BValue.cpp" />
+    <ClCompile Include="Bookshelfs\RemoteSquirrel.cpp" />
+    <ClCompile Include="Materials\CallbackThread.cpp" />
+    <ClCompile Include="Materials\CsvSettings.cpp" />
+    <ClCompile Include="Materials\Directory.cpp" />
+    <ClCompile Include="Materials\FifoVector.cpp" />
+    <ClCompile Include="Materials\FileCommunicator.cpp" />
+    <ClCompile Include="Materials\FileWriter.cpp" />
+    <ClCompile Include="Materials\Functions.cpp" />
+    <ClCompile Include="Materials\GarbageCollector.cpp" />
+    <ClCompile Include="Materials\Logger.cpp" />
+    <ClCompile Include="Materials\Resources.cpp" />
+    <ClCompile Include="Materials\StringLookup.cpp" />
+    <ClCompile Include="Materials\Thread.cpp" />
+    <ClCompile Include="Materials\ThreadedBuffer.cpp" />
+    <ClCompile Include="Molecules\BaseCommunicator.cpp" />
+    <ClCompile Include="Molecules\Callbacks.cpp" />
+    <ClCompile Include="Molecules\Property.cpp" />
+    <ClCompile Include="Molecules\String.cpp" />
+    <ClCompile Include="Molecules\StringVector.cpp" />
+    <ClCompile Include="Molecules\Vector.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Atoms\Callable.h" />
+    <ClInclude Include="Atoms\Defines.h" />
+    <ClInclude Include="Atoms\Freeable.h" />
+    <ClInclude Include="Atoms\Initialize.h" />
+    <ClInclude Include="Atoms\Lockable.h" />
+    <ClInclude Include="Atoms\MemFuncs.h" />
+    <ClInclude Include="Bookshelfs\AbstractSquirrel.h" />
+    <ClInclude Include="Bookshelfs\BAttribute.h" />
+    <ClInclude Include="Bookshelfs\BField.h" />
+    <ClInclude Include="Bookshelfs\BFields.h" />
+    <ClInclude Include="Bookshelfs\BFunctions.h" />
+    <ClInclude Include="Bookshelfs\BNode.h" />
+    <ClInclude Include="Bookshelfs\BRecord.h" />
+    <ClInclude Include="Bookshelfs\BRecords.h" />
+    <ClInclude Include="Bookshelfs\BTable.h" />
+    <ClInclude Include="Bookshelfs\BValue.h" />
+    <ClInclude Include="Bookshelfs\RemoteSquirrel.h" />
+    <ClInclude Include="Materials\CallbackThread.h" />
+    <ClInclude Include="Materials\CsvSettings.h" />
+    <ClInclude Include="Materials\Directory.h" />
+    <ClInclude Include="Materials\FifoVector.h" />
+    <ClInclude Include="Materials\FileCommunicator.h" />
+    <ClInclude Include="Materials\FileWriter.h" />
+    <ClInclude Include="Materials\Functions.h" />
+    <ClInclude Include="Materials\GarbageCollector.h" />
+    <ClInclude Include="Materials\Logger.h" />
+    <ClInclude Include="Materials\Resources.h" />
+    <ClInclude Include="Materials\StringLookup.h" />
+    <ClInclude Include="Materials\Thread.h" />
+    <ClInclude Include="Materials\ThreadedBuffer.h" />
+    <ClInclude Include="Molecules\BaseCommunicator.h" />
+    <ClInclude Include="Molecules\Callbacks.h" />
+    <ClInclude Include="Molecules\Property.h" />
+    <ClInclude Include="Molecules\String.h" />
+    <ClInclude Include="Molecules\StringVector.h" />
+    <ClInclude Include="Molecules\Vector.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F89D21F9-9D15-4590-AA71-F6D7C275C5E7}</ProjectGuid>
+    <RootNamespace>libGroundfloor</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v140</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/FS</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>devmake.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/FS</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PostBuildEvent>
+      <Command>devmake.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PostBuildEvent>
+      <Command>devmake.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PostBuildEvent>
+      <Command>devmake.bat</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -16,7 +16,9 @@
    #include <sys/socket.h>
 
    #if defined(GF_OS_MAC)
-      #define MSG_NOSIGNAL SO_NOSIGPIPE
+      #ifndef MSG_NOSIGNAL
+         #define MSG_NOSIGNAL SO_NOSIGPIPE
+      #endif
    #endif
    #if defined(GF_OS_SOLARIS)
       #define MSG_NOSIGNAL 0

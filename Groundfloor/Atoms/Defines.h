@@ -39,8 +39,9 @@
 #ifdef GF_OS_LINUX
 #include <unistd.h>
 #define GFMillisleep(a) usleep(a*1000)
-
-	typedef long long __int64;
+	#ifndef __INTEL_COMPILER
+		typedef long long __int64;
+	#endif
 	typedef unsigned char BYTE;
 	typedef unsigned short WORD;
 	typedef unsigned long DWORD;

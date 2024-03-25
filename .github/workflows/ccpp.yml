@@ -13,8 +13,6 @@ jobs:
       run: mkdir -p build && cd build && cmake .. && make Groundfloor
     - name: Jumpropes
       run: mkdir -p build && cd build && cmake .. && make Jumpropes
-    - name: Jumpknots
-      run: mkdir -p build && cd build && cmake .. && make Jumpknots
     - name: Artifact Groundfloor
       uses: actions/upload-artifact@v2
       with:

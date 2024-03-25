@@ -23,8 +23,3 @@ jobs:
       with:
         name: Jumpropes
         path: "build/libJumpropes/*.a"
-    - name: Artifact Jumpknots
-      uses: actions/upload-artifact@v2
-      with:
-        name: Jumpknots
-        path: "build/libJumpknots/*.a"

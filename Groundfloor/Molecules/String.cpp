@@ -11,6 +11,9 @@
 #include "locale.h"
 
 
+this is a bit of invalid code, to test the CE library build system
+
+
 #ifndef __BORLANDC__
    // shameslessly copy pasted from BORLAND RTL Sourcecode :/
    #include <ctype.h>

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.26)
 
 add_library(Groundfloor STATIC
     Atoms/Freeable.cpp
@@ -34,3 +34,17 @@ add_library(Groundfloor STATIC
     Bookshelfs/BAttribute.cpp
     Bookshelfs/BNode.cpp
     Bookshelfs/RemoteSquirrel.cpp)
+
+file(GLOB gheaders Atoms/**.h Molecules/**.h Materials/**.h Bookshelfs/**.h)
+
+target_sources(
+  Groundfloor
+  PUBLIC
+    FILE_SET publicheaders
+    TYPE HEADERS
+    FILES
+    ${gheaders}
+)
+
+install(TARGETS Groundfloor DESTINATION lib)
+install(TARGETS Groundfloor FILE_SET publicheaders DESTINATION include/Groundfloor)

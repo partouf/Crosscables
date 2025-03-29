@@ -31,7 +31,7 @@ target_sources(
     ${gheaders}
 )
 
-if(NOT DISABLE_JUMPROPES) {
+if(NOT DISABLE_JUMPROPES)
   install(TARGETS Jumpropes DESTINATION lib)
   install(TARGETS Jumpropes FILE_SET publicheaders DESTINATION include/Jumpropes)
-}
+endif()

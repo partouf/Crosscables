@@ -19,7 +19,7 @@ jobs:
         name: Groundfloor
         path: "build/libGroundfloor/*.a"
     - name: Artifact Jumpropes
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: Jumpropes
         path: "build/libJumpropes/*.a"

@@ -7,7 +7,11 @@ project(Crosscables
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 add_subdirectory(Groundfloor)
-add_subdirectory(Jumpropes)
+
+if(NOT DISABLE_JUMPROPES)
+    add_subdirectory(Jumpropes)
+endif()
+
 #add_subdirectory(Jumpknots)
 
 # add_subdirectory(MySQLBooks)

@@ -4,6 +4,9 @@
 #include "../Atoms/Defines.h"
 #include <math.h>
 #include <cstdio>
+#include <stdexcept>
+#include <string>
+#include <cstring>
 
 
 #if _MSC_VER >= 1400
@@ -750,7 +753,91 @@ __int64 Groundfloor::GetTimestamp() {
    return tCurrent;
 }
 
+// Validate strftime format string
+static bool validateStrftimeFormat(const char *format, Groundfloor::String *errorMsg = nullptr) {
+   // Valid strftime conversion specifiers according to cppreference.com
+   // Including: n t y Y E y C c G g b h B m U W V j d a e A a w u H I O M S p c x X r R T D F z Z p %
+   const char* validSpecifiers = "ntyYEyCcGgbhBmUWVjdaeAawuHIOMSpcxXrRTDFzZp%";
+
+   const char* p = format;
+   while (*p) {
+      if (*p == '%') {
+         const char* percentStart = p;  // Remember where the % started
+         p++;
+         if (*p == '\0') {
+            if (errorMsg) {
+               errorMsg->setValue("Format string ends with incomplete % specifier");
+            }
+            return false;
+         }
+
+         // Check for optional flag characters (-, _, 0, ^, #)
+         if (*p == '-' || *p == '_' || *p == '0' || *p == '^' || *p == '#') {
+            p++;
+            if (*p == '\0') {
+               if (errorMsg) {
+                  errorMsg->setValue("Format string ends with incomplete % specifier after flag");
+               }
+               return false;
+            }
+         }
+
+         // Check for optional field width (digits)
+         while (*p >= '0' && *p <= '9') {
+            p++;
+            if (*p == '\0') {
+               if (errorMsg) {
+                  errorMsg->setValue("Format string ends with incomplete % specifier after width");
+               }
+               return false;
+            }
+         }
+
+         // Check for E or O modifier
+         if (*p == 'E' || *p == 'O') {
+            p++;
+            if (*p == '\0') {
+               if (errorMsg) {
+                  errorMsg->setValue("Format string ends with incomplete % specifier after modifier");
+               }
+               return false;
+            }
+         }
+
+         // Check if the conversion specifier is valid
+         if (strchr(validSpecifiers, *p) == nullptr) {
+            if (errorMsg) {
+               // Build error message without sprintf
+               errorMsg->setValue("Invalid format specifier: ");
+
+               // Extract and append the invalid format sequence (from % to current position)
+               int sequenceLength = (int)(p - percentStart + 1);
+               errorMsg->append(percentStart, sequenceLength);
+            }
+            return false;
+         }
+      }
+      p++;
+   }
+
+   return true;
+}
+
 Groundfloor::String *Groundfloor::TimestampToStr(const char *format, __int64 timestamp) {
+   // Validate format string first
+   Groundfloor::String errorMsg;
+   if (!validateStrftimeFormat(format, &errorMsg)) {
+      // Throw exception with details about invalid format
+      Groundfloor::String *exceptionMsg = new Groundfloor::String();
+      exceptionMsg->setValue("Invalid strftime format string: ");
+      exceptionMsg->append(&errorMsg);
+
+      std::string stdError = exceptionMsg->getValue();
+      delete exceptionMsg;
+
+      throw std::runtime_error(stdError);
+   }
+
    Groundfloor::String *datetimestr = new Groundfloor::String();
 
    // reserve memory

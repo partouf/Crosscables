@@ -1,25 +1,51 @@
 name: C/C++ CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
-    runs-on: ubuntu-latest
-    
+    runs-on: ${{ matrix.os }}
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Groundfloor
-      run: mkdir -p build && cd build && cmake .. && make Groundfloor
-    - name: Jumpropes
-      run: mkdir -p build && cd build && cmake .. && make Jumpropes
+    - uses: actions/checkout@v4
+    - name: Build Groundfloor
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+        cmake --build . --target Groundfloor --config Release
+    - name: Build Jumpropes
+      run: |
+        cd build
+        cmake --build . --target Jumpropes --config Release
+    - name: Build Groundfloor Tests
+      run: |
+        cd Groundfloor
+        mkdir -p build
+        cd build
+        cmake .. -DBUILD_TESTING=ON
+        cmake --build . --target groundfloor_tests --config Release
+    - name: Run Groundfloor Tests
+      run: |
+        cd Groundfloor/build
+        ctest --output-on-failure -C Release
     - name: Artifact Groundfloor
       uses: actions/upload-artifact@v4
       with:
-        name: Groundfloor
-        path: "build/libGroundfloor/*.a"
+        name: Groundfloor-${{ matrix.os }}
+        path: |
+          build/libGroundfloor/*.a
+          build/Release/Groundfloor.lib
+          build/Debug/Groundfloor.lib
     - name: Artifact Jumpropes
       uses: actions/upload-artifact@v4
       with:
-        name: Jumpropes
-        path: "build/libJumpropes/*.a"
+        name: Jumpropes-${{ matrix.os }}
+        path: |
+          build/libJumpropes/*.a
+          build/Release/Jumpropes.lib
+          build/Debug/Jumpropes.lib
